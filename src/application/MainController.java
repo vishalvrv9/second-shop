@@ -23,6 +23,7 @@ public class MainController {
 		else {
 			//adding comment to show some test commit
 			lblLogin.setText("Login Failed");
+			//testing
 
 		}
 	}
