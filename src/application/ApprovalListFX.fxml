@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="101.0" layoutY="78.0" prefHeight="200.0" prefWidth="429.0" style="-fx-border-color: #8bc0f2;">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Clothes ID" />
+          <TableColumn prefWidth="75.0" text="User name" />
+            <TableColumn prefWidth="75.0" text="Brand" />
+            <TableColumn prefWidth="75.0" text="type" />
+            <TableColumn prefWidth="128.0" text="Time of approval" />
+        </columns>
+      </TableView>
+      <Label alignment="TOP_CENTER" layoutX="162.0" layoutY="31.0" prefHeight="17.0" prefWidth="276.0" style="-fx-font-size: 20;" text="Application Approval List" textFill="#8bc0f2" />
+      <Button layoutX="273.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #8bc0f2;" text="Return" />
+   </children>
+</AnchorPane>

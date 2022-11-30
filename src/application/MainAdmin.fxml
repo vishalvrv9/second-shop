@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.20317725752508362" layoutX="-1.0" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0">
+        <items>
+          <AnchorPane fx:id="controlPanel" minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="86.0" style="-fx-border-color: #8bc0f2;">
+               <children>
+                  <VBox prefHeight="415.0" prefWidth="118.0" style="-fx-background-color: #303133;">
+                     <children>
+                        <Button fx:id="btnUserList" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" style="-fx-background-color: #303133;" text="USER LIST" textFill="#8bc0f2" />
+                        <Button fx:id="btnApplication" mnemonicParsing="false" prefHeight="50.0" prefWidth="126.0" style="-fx-background-color: #303133;" text="APPLICATION" textFill="#8bc0f2" />
+                        <Button fx:id="btnApprovalList" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #303133;" text="APPROVAL LIST" textFill="#8bc0f2" />
+                        <Button fx:id="btnRejectedList" mnemonicParsing="false" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: #303133;" text="REJECTED LIST" textFill="#8bc0f2" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="workArea" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-border-color: #8bc0f2;" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
