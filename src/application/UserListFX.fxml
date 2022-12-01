@@ -1,27 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="74.0" layoutY="72.0" prefHeight="200.0" prefWidth="450.0" style="-fx-border-color: #8bc0f2;">
+      <TableView layoutY="60.0" prefHeight="250.0" prefWidth="600.0" style="-fx-border-color: #8bc0f2;">
         <columns>
-          <TableColumn prefWidth="75.0" style="-fx-background-color: #53;" text="Name" />
-          <TableColumn prefWidth="75.0" text="Gender" />
-            <TableColumn prefWidth="75.0" text="Phone NO." />
-            <TableColumn prefWidth="75.0" text="Email" />
-            <TableColumn prefWidth="75.0" text="Address" />
-            <TableColumn prefWidth="75.0" text="Password" />
+          <TableColumn prefWidth="100.0" style="-fx-background-color: #53;" text="Name" />
+          <TableColumn prefWidth="100.0" text="Gender" />
+            <TableColumn prefWidth="100.0" text="Phone NO." />
+            <TableColumn prefWidth="100.0" text="Email" />
+            <TableColumn prefWidth="100.0" text="Address" />
+            <TableColumn prefWidth="100.0" text="Password" />
         </columns>
       </TableView>
-      <Button layoutX="80.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: #8bc0f2;" text="Add" />
-      <Button layoutX="210.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: #8bc0f2;" text="Delete" />
-      <Button layoutX="334.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: #8bc0f2;" text="Update" />
-      <Button layoutX="473.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: #8bc0f2;" text="Return" />
-      <Label alignment="TOP_CENTER" layoutX="141.0" layoutY="18.0" prefHeight="18.0" prefWidth="318.0" style="-fx-font-size: 20;" text="User Management page" textFill="#8bbff0" />
+      <Button layoutX="14.0" layoutY="340.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #8bc0f2;" text="Add">
+         <font>
+            <Font name="BM JUA OTF" size="15.0" />
+         </font></Button>
+      <Button layoutX="172.0" layoutY="340.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #8bc0f2;" text="Update">
+         <font>
+            <Font name="BM JUA OTF" size="15.0" />
+         </font></Button>
+      <Button layoutX="334.0" layoutY="340.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #8bc0f2;" text="Update">
+         <font>
+            <Font name="BM JUA OTF" size="15.0" />
+         </font></Button>
+      <Button layoutX="486.0" layoutY="340.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #8bc0f2;" text="Return">
+         <font>
+            <Font name="BM JUA OTF" size="15.0" />
+         </font></Button>
+      <TitledPane animated="false" layoutX="1.0" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" text="User Management page">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="592.0" />
+        </content>
+         <font>
+            <Font name="BM DoHyeon OTF" size="13.0" />
+         </font>
+      </TitledPane>
    </children>
 </AnchorPane>
