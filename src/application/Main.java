@@ -21,7 +21,7 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Second Shop System - best system for helping :) !");
-			primaryStage.getIcons().add(new Image("icon.png"));
+			primaryStage.getIcons().add(new Image("images/icon.png"));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
