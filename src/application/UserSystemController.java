@@ -1,5 +1,6 @@
- package application;
+package application;
 
+import java.time.LocalTime;
 import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -87,6 +88,8 @@ public class UserSystemController  {
     private AnchorPane bear_pane;
     @FXML
     private StackPane user_pane;
+    @FXML
+    private Label lblTime;
 	
 
     
@@ -135,6 +138,9 @@ public class UserSystemController  {
 	public void switchPage(ActionEvent event) {
 		if (event.getSource()==dashboard_button) {
 			dashboard_pane.setVisible(true);
+			lblTime.setText(LocalTime.now().toString().substring(0,8));
+			chart_pane.setVisible(false);
+			item_pane.setVisible(false);
 			chart_pane.setVisible(false);
 			item_pane.setVisible(false);
 			
@@ -250,12 +256,16 @@ public class UserSystemController  {
 						e.printStackTrace();
 					}
 					}
-				}
-	 			}
-
+				
+	         }
+	   
+	 }
+	 }
+	 
 	
 
 	
-}
+
+	
 
 

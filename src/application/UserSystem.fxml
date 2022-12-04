@@ -2,8 +2,13 @@
 
 <!-- <?import com.gluonhq.charm.glisten.control.Icon?> -->
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -79,7 +84,102 @@
                            <children>
                               <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0">
                                  <children>
-                                    <ImageView fx:id="dashboard_image" fitHeight="402.0" fitWidth="199.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+                                    <BorderPane layoutX="3.0" layoutY="2.0" prefHeight="420.0" prefWidth="538.0">
+                                       <top>
+                                          <AnchorPane prefHeight="0.0" prefWidth="538.0" style="-fx-border-color: #778899;" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label fx:id="lblDashboard" layoutX="8.0" layoutY="1.0" prefHeight="19.0" prefWidth="158.0" text="Dashboard   Welcome!">
+                                                   <font>
+                                                      <Font name="Avenir Next Bold" size="13.0" />
+                                                   </font></Label>
+                                                <Label fx:id="lblTime" alignment="TOP_RIGHT" layoutX="404.0" layoutY="1.0" prefHeight="18.0" prefWidth="120.0" text="Time">
+                                                   <font>
+                                                      <Font name="Avenir Next Condensed Bold" size="13.0" />
+                                                   </font></Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </top>
+                                       <left>
+                                          <AnchorPane prefHeight="188.0" prefWidth="239.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="178.0" prefWidth="226.0">
+                                                   <children>
+                                                      <Label fx:id="lblBuy" layoutX="2.0" layoutY="3.0" prefHeight="23.0" prefWidth="222.0" text="How many second hand clothes " />
+                                                      <Label fx:id="lblTree" layoutX="53.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Plant" />
+                                                      <Label fx:id="lblBath" layoutY="134.0" prefHeight="18.0" prefWidth="105.0" text="Saving water for  " />
+                                                      <Button fx:id="btnView" layoutX="43.0" layoutY="50.0" minWidth="40.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #778899; -fx-font-size: 9; -fx-background-radius: 1px20px;" text="which means you">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="10.0" />
+                                                         </font></Button>
+                                                      <TextField fx:id="txtBuy" layoutX="185.0" layoutY="22.0" prefHeight="26.0" prefWidth="27.0" style="-fx-background-radius: 5; -fx-border-color: #778899;" />
+                                                      <Label fx:id="lblTreeNum" layoutX="118.0" layoutY="89.0" prefHeight="18.0" prefWidth="30.0" text="1" />
+                                                      <Label fx:id="lblBathNum" layoutX="117.0" layoutY="134.0" prefHeight="18.0" prefWidth="33.0" text="2" />
+                                                      <Label layoutX="3.0" layoutY="26.0" prefHeight="18.0" prefWidth="162.0" text="have you bought this year?" />
+                                                      <Label fx:id="lblTree1" layoutX="179.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Trees" />
+                                                      <Label fx:id="lblTree11" layoutX="179.0" layoutY="134.0" prefHeight="18.0" prefWidth="39.0" text="Baths" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </left>
+                                       <center>
+                                          <AnchorPane prefHeight="191.0" prefWidth="298.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="185.0" prefWidth="275.0">
+                                                   <children>
+                                                      <PieChart fx:id="chart2" layoutX="51.0" layoutY="9.0" prefHeight="168.0" prefWidth="200.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane prefHeight="197.0" prefWidth="538.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="182.0" prefWidth="305.0">
+                                                   <children>
+                                                      <BarChart fx:id="chart1" layoutX="5.0" layoutY="16.0" prefHeight="150.0" prefWidth="347.0">
+                                                        <xAxis>
+                                                          <CategoryAxis side="BOTTOM" fx:id="x" />
+                                                        </xAxis>
+                                                        <yAxis>
+                                                          <NumberAxis fx:id="y" label="Type" side="LEFT" />
+                                                        </yAxis>
+                                                      </BarChart>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="388.0" layoutY="4.0" prefHeight="190.0" prefWidth="140.0" style="-fx-background-color: #778899;">
+                                                   <children>
+                                                      <Label alignment="TOP_CENTER" layoutX="7.0" layoutY="8.0" prefHeight="5.0" prefWidth="128.0" text="Buying second hand items">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="14.0" layoutY="162.0" prefHeight="5.0" prefWidth="128.0" text="Carbon footprint reduct">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="14.0" layoutY="82.0" prefHeight="5.0" prefWidth="128.0" text="Carbon dioxide emissions">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="48.0" layoutY="22.0" prefHeight="60.0" prefWidth="47.0" text="17.4">
+                                                         <font>
+                                                            <Font name="BM DoHyeon OTF" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="48.0" layoutY="95.0" prefHeight="67.0" prefWidth="47.0" text="82%">
+                                                         <font>
+                                                            <Font name="BM DoHyeon OTF" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children></AnchorPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="item_pane" layoutX="1.0" layoutY="1.0" prefHeight="426.0" prefWidth="543.0" visible="false">
