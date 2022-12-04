@@ -95,12 +95,13 @@ public class UserSystemController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        imageBook.setImage(new Image((new File("medias/Book.png")).toURI().toString()));
-        imageLaptop.setImage(new Image((new File("medias/Laptop.png")).toURI().toString()));
-        imageCookies.setImage(new Image((new File("medias/Cookies.png")).toURI().toString()));
-        imageRedpocket.setImage(new Image((new File("medias/RedPocket.png")).toURI().toString()));
-        imageFlower.setImage(new Image((new File("medias/Flowers.png")).toURI().toString()));
-        imageBear.setImage(new Image((new File("medias/BearToy.png")).toURI().toString()));
+    	ImageView imageBook= new ImageView(new Image("Book.png"));
+        ImageView imageLaptop=new ImageView(new Image("Laptop.png"));
+        ImageView imageCookies=new ImageView(new Image("Cookies.png"));
+        ImageView imageRedPocket= new ImageView(new Image("RedPocket.png"));
+        ImageView imageFlower=new ImageView(new Image("Flowers.png"));
+        ImageView imageBear=new ImageView(new Image("BearToy.png"));
+
 	     
 	}
 	
