@@ -34,29 +34,29 @@ public class UserSystemController implements Initializable {
     @FXML
     private AnchorPane dashboard_pane;
     @FXML
-    private ImageView image1;
+    private ImageView imageBook;
     @FXML
-    private ImageView image2;
+    private ImageView imageLaptop;
     @FXML
-    private ImageView image3;
+    private ImageView imageCookies;
     @FXML
-    private ImageView image4;
+    private ImageView imageRedpocket;
     @FXML
-    private ImageView image5;
+    private ImageView imageFlower;
     @FXML
-    private ImageView image6;
+    private ImageView imageBear;
     @FXML
-    private Label item1;
+    private Label firstChartLabel;
     @FXML
-    private Label item2;
+    private Label secondChartLabel;
     @FXML
-    private Label item3;
+    private Label thirdChartLabel;
     @FXML
-    private Label item4;
+    private Label fouthChartLabel;
     @FXML
-    private Label item5;
+    private Label fifthChartLabel;
     @FXML
-    private Label item6;
+    private Label sixthChartLabel;
     
     @FXML
     private Button item_button;
@@ -69,47 +69,39 @@ public class UserSystemController implements Initializable {
     @FXML
     private StackPane userpage;
     @FXML
-    private Button button1;
+    private Button book_button;
     @FXML
-    private Button button2;
+    private Button laptop_button;
     @FXML
-    private Button button3;
+    private Button cookies_button;
     @FXML
-    private Button button4;
+    private Button redPocket_button;
     @FXML
-    private Button button5;
+    private Button flower_button;
     @FXML
-    private Button button6;
+    private Button bear_button;
     @FXML
-    private AnchorPane pane1;
+    private AnchorPane book_pane;
     @FXML
-    private AnchorPane pane2;
+    private AnchorPane laptop_pane;
     @FXML
-    private AnchorPane pane3;
+    private AnchorPane cookies_pane;
     @FXML
-    private AnchorPane pane4;
+    private AnchorPane redpocket_pane;
     @FXML
-    private AnchorPane pane5;
+    private AnchorPane flower_pane;
     @FXML
-    private AnchorPane pane6;
+    private AnchorPane bear_pane;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        image1.setImage(new Image((new File("medias/Book.png")).toURI().toString()));
-        image2.setImage(new Image((new File("medias/Laptop.png")).toURI().toString()));
-        image3.setImage(new Image((new File("medias/Cookies.png")).toURI().toString()));
-        image4.setImage(new Image((new File("medias/RedPocket.png")).toURI().toString()));
-        image5.setImage(new Image((new File("medias/Flowers.png")).toURI().toString()));
-        image6.setImage(new Image((new File("medias/BearToy.png")).toURI().toString()));
-	     item_pane.getChildren().addAll(pane1,pane2,pane3,pane4,pane5,pane6);
-	     pane1.getChildren().add(image1);
-	     pane2.getChildren().add(image2);
-	     pane3.getChildren().add(image3);
-	     pane4.getChildren().add(image4);
-	     pane5.getChildren().add(image5);
-	     pane6.getChildren().add(image6);
+        imageBook.setImage(new Image((new File("medias/Book.png")).toURI().toString()));
+        imageLaptop.setImage(new Image((new File("medias/Laptop.png")).toURI().toString()));
+        imageCookies.setImage(new Image((new File("medias/Cookies.png")).toURI().toString()));
+        imageRedpocket.setImage(new Image((new File("medias/RedPocket.png")).toURI().toString()));
+        imageFlower.setImage(new Image((new File("medias/Flowers.png")).toURI().toString()));
+        imageBear.setImage(new Image((new File("medias/BearToy.png")).toURI().toString()));
 	     
-        
 	}
 	
 	
@@ -179,7 +171,7 @@ public class UserSystemController implements Initializable {
 	 public void imageSelect(ActionEvent event) {
 		 
 	 
-	        if (event.getSource()==button1) {
+	        if (event.getSource()==book_button) {
 				Alert alert=new Alert(AlertType.INFORMATION);
 				alert.setTitle("Confirmation message");
 				alert.setContentText("This one's price is $5.99,are you sure to pick one?");
@@ -187,7 +179,7 @@ public class UserSystemController implements Initializable {
 				Optional<ButtonType> option= alert.showAndWait();
 				if(option.get().equals(ButtonType.YES)) {
 					try {
-						item1.setText("Three Body");
+						firstChartLabel.setText("Three Body");
 						System.exit(0);
 					} 
 					catch(Exception e) {
@@ -195,7 +187,7 @@ public class UserSystemController implements Initializable {
 					}
 					}
 				}
-	        if(event.getSource()==button2){
+	        if(event.getSource()==laptop_button){
 				Alert alert2=new Alert(AlertType.INFORMATION);
 				alert2.setTitle("Confirmation message");
 				alert2.setContentText("This one's price is $669.99,are you sure to pick one?");
@@ -203,7 +195,7 @@ public class UserSystemController implements Initializable {
 				Optional<ButtonType> option= alert2.showAndWait();
 				if(option.get().equals(ButtonType.YES)) {
 					try {
-						item2.setText("iMac");
+						secondChartLabel.setText("iMac");
 						System.exit(0);
 					} 
 					catch(Exception e) {
@@ -212,7 +204,7 @@ public class UserSystemController implements Initializable {
 					}
 				}
 	        
-	        if(event.getSource()==button3){
+	        if(event.getSource()==cookies_button){
 				Alert alert3=new Alert(AlertType.INFORMATION);
 				alert3.setTitle("Confirmation message");
 				alert3.setContentText("This one's price is $3.99,are you sure to pick one?");
@@ -220,7 +212,7 @@ public class UserSystemController implements Initializable {
 				Optional<ButtonType> option= alert3.showAndWait();
 				if(option.get().equals(ButtonType.YES)) {
 					try {
-						item3.setText("Cookies");
+						thirdChartLabel.setText("Cookies");
 						System.exit(0);
 					} 
 					catch(Exception e) {
@@ -228,7 +220,7 @@ public class UserSystemController implements Initializable {
 					}
 					}
 				}
-	         if(event.getSource()==button4){
+	         if(event.getSource()==cookies_button){
 				Alert alert4=new Alert(AlertType.INFORMATION);
 				alert4.setTitle("Confirmation message");
 				alert4.setContentText("This one's price is $10.99,are you sure to pick one?");
@@ -236,7 +228,7 @@ public class UserSystemController implements Initializable {
 				Optional<ButtonType> option= alert4.showAndWait();
 				if(option.get().equals(ButtonType.YES)) {
 					try {
-						item4.setText("Red Pocket");
+						fouthChartLabel.setText("Red Pocket");
 						System.exit(0);
 					} 
 					catch(Exception e) {
@@ -244,7 +236,7 @@ public class UserSystemController implements Initializable {
 					}
 					}
 				}
-	         if(event.getSource()==button5){
+	         if(event.getSource()==flower_button){
 				Alert alert5=new Alert(AlertType.INFORMATION);
 				alert5.setTitle("Confirmation message");
 				alert5.setContentText("This one's price is $24.99,are you sure to pick one?");
@@ -252,7 +244,7 @@ public class UserSystemController implements Initializable {
 				Optional<ButtonType> option= alert5.showAndWait();
 				if(option.get().equals(ButtonType.YES)) {
 					try {
-						item5.setText("Peach Blossom");
+						fifthChartLabel.setText("Peach Blossom");
 						System.exit(0);
 					} 
 					catch(Exception e) {
@@ -260,7 +252,7 @@ public class UserSystemController implements Initializable {
 					}
 					}
 				}
-	         if(event.getSource()==button6) {
+	         if(event.getSource()==bear_button) {
 				Alert alert6=new Alert(AlertType.INFORMATION);
 				alert6.setTitle("Confirmation message");
 				alert6.setContentText("This one's price is $45.99,are you sure to pick one?");
@@ -268,7 +260,7 @@ public class UserSystemController implements Initializable {
 				Optional<ButtonType> option= alert6.showAndWait();
 				if(option.get().equals(ButtonType.YES)) {
 					try {
-						item6.setText("Toy Bear");
+						sixthChartLabel.setText("Toy Bear");
 						System.exit(0);
 					} 
 					catch(Exception e) {

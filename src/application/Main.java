@@ -26,7 +26,7 @@ public class Main extends Application {
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
-			// just for testing
+			
 		}
 	}
 	
