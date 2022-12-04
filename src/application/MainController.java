@@ -68,7 +68,7 @@ public class MainController {
 			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("application/UserSystem.fxml"));
 			System.out.println("-----loader: "+ loader.toString());
 			Parent root = loader.load();
-			Scene scene = new Scene(root, 600, 400);
+			Scene scene = new Scene(root, 739, 462);
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("Hi! There is User System");

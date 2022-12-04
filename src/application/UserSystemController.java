@@ -1,17 +1,10 @@
  package application;
 
-import java.io.File;
-import java.net.URL;
 import java.util.Optional;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -19,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-public class UserSystemController implements Initializable {
+public class UserSystemController  {
 
 	@FXML
     private Button chart_button;
@@ -92,19 +85,8 @@ public class UserSystemController implements Initializable {
     private AnchorPane flower_pane;
     @FXML
     private AnchorPane bear_pane;
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    	ImageView imageBook= new ImageView(new Image("Book.png"));
-        ImageView imageLaptop=new ImageView(new Image("Laptop.png"));
-        ImageView imageCookies=new ImageView(new Image("Cookies.png"));
-        ImageView imageRedPocket= new ImageView(new Image("RedPocket.png"));
-        ImageView imageFlower=new ImageView(new Image("Flowers.png"));
-        ImageView imageBear=new ImageView(new Image("BearToy.png"));
-
-	     
-	}
-	
+    @FXML
+    private StackPane user_pane;
 	
 
     
