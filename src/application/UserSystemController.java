@@ -1,4 +1,4 @@
- package application;
+package application;
 
 import java.time.LocalTime;
 import java.util.Optional;
@@ -266,15 +266,14 @@ public class UserSystemController  {
 						e.printStackTrace();
 					}
 					}
+
 				}	 	totalprice_label.setText("Total Price: "+String.valueOf(totalcost));
 
 	 		}
 	 	}
-	 
 
+				
+	         
 	
-
-	
-
 
 
