@@ -140,18 +140,18 @@ public class UserSystemController  {
 		XYChart.Series<String, Number> series3 = new XYChart.Series<>();
 		series3.setName("Resale");
 		series3.getData().add(new XYChart.Data<>("2017", 3));
-		series3.getData().add(new XYChart.Data<>("2018",5));
 		series3.getData().add(new XYChart.Data<>("2019",7));
-		series3.getData().add(new XYChart.Data<>("2020",9));
 		series3.getData().add(new XYChart.Data<>("2021",15));
+		series3.getData().add(new XYChart.Data<>("2023",27));
+		series3.getData().add(new XYChart.Data<>("2025",47));
 
 		XYChart.Series<String, Number> series4 = new XYChart.Series<>();
 		series4.setName("Traditional donation");
 		series4.getData().add(new XYChart.Data<>("2017", 17));
-		series4.getData().add(new XYChart.Data<>("2018",19));
 		series4.getData().add(new XYChart.Data<>("2019",21));
-		series4.getData().add(new XYChart.Data<>("2020",18));
 		series4.getData().add(new XYChart.Data<>("2021",21));
+		series4.getData().add(new XYChart.Data<>("2023",26));
+		series4.getData().add(new XYChart.Data<>("2025",30));
 		chart2.getData().addAll(series3,series4);
 	}
 
