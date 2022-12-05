@@ -111,9 +111,18 @@
                                                          <font>
                                                             <Font name="BM JUA OTF" size="10.0" />
                                                          </font></Button>
-                                                      <TextField fx:id="txtBuy" alignment="CENTER" layoutX="168.0" layoutY="24.0" prefHeight="7.0" prefWidth="57.0" style="-fx-background-radius: 5;" />
-                                                      <Label fx:id="lblTreeNum" alignment="CENTER" layoutX="94.0" layoutY="89.0" prefHeight="18.0" prefWidth="85.0" text="0" />
-                                                      <Label fx:id="lblBathNum" alignment="CENTER" layoutX="97.0" layoutY="134.0" prefHeight="18.0" prefWidth="80.0" text="0" />
+                                                      <TextField fx:id="txtBuy" alignment="CENTER" layoutX="168.0" layoutY="24.0" prefHeight="26.0" prefWidth="45.0" style="-fx-background-radius: 5;">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="13.0" />
+                                                         </font></TextField>
+                                                      <Label fx:id="lblTreeNum" alignment="CENTER" layoutX="95.0" layoutY="89.0" prefHeight="18.0" prefWidth="85.0">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="13.0" />
+                                                         </font></Label>
+                                                      <Label fx:id="lblBathNum" alignment="CENTER" layoutX="98.0" layoutY="134.0" prefHeight="18.0" prefWidth="80.0">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="13.0" />
+                                                         </font></Label>
                                                       <Label layoutX="3.0" layoutY="26.0" prefHeight="18.0" prefWidth="162.0" text="have you bought this year?" />
                                                       <Label fx:id="lblTree1" layoutX="179.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Trees" />
                                                       <Label fx:id="lblTree11" layoutX="179.0" layoutY="134.0" prefHeight="18.0" prefWidth="39.0" text="Baths" />
@@ -124,17 +133,21 @@
                                                       <Font name="BM HANNA Pro OTF" size="12.0" />
                                                    </font>
                                                 </Label>
+                                                <Line endX="135.0" endY="-8.0" layoutX="108.0" layoutY="180.0" startX="-101.0" startY="-8.0" stroke="#909090" />
                                              </children>
                                           </AnchorPane>
                                        </left>
                                        <center>
-                                          <AnchorPane prefHeight="191.0" prefWidth="298.0" BorderPane.alignment="CENTER">
+                                          <AnchorPane prefHeight="185.0" prefWidth="296.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="185.0" prefWidth="275.0">
+                                                <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="178.0" prefWidth="284.0">
                                                    <children>
-                                                      <StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="159.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
+                                                      <StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="154.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
                                                         <xAxis>
-                                                          <CategoryAxis prefHeight="19.0" prefWidth="224.0" side="BOTTOM" fx:id="xAxis1" />
+                                                          <CategoryAxis prefHeight="23.0" prefWidth="218.0" side="BOTTOM" fx:id="xAxis1">
+                                                               <tickLabelFont>
+                                                                  <Font name="BM JUA OTF" size="8.0" />
+                                                               </tickLabelFont></CategoryAxis>
                                                         </xAxis>
                                                         <yAxis>
                                                           <NumberAxis fx:id="yAxis1" label="Value" prefHeight="110.0" prefWidth="40.0" side="LEFT">
@@ -148,6 +161,18 @@
                                                             <Font name="BM HANNA Pro OTF" size="12.0" />
                                                          </font>
                                                       </Label>
+                                                      <Label layoutX="58.0" layoutY="171.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #aad3c0; -fx-background-radius: 5;" />
+                                                      <Label layoutX="142.0" layoutY="171.0" prefHeight="0.0" prefWidth="15.0" style="-fx-background-color: #a2c3cd; -fx-background-radius: 5;" />
+                                                      <Label layoutX="82.0" layoutY="173.0" text="Resale" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="166.0" layoutY="171.0" prefHeight="18.0" prefWidth="96.0" text="Traditional donation" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                              </children>
@@ -158,9 +183,12 @@
                                              <children>
                                                 <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="182.0" prefWidth="305.0">
                                                    <children>
-                                                      <BarChart fx:id="chart1" layoutX="-2.0" prefHeight="183.0" prefWidth="354.0" stylesheets="@barchart.css">
+                                                      <BarChart fx:id="chart1" layoutX="-2.0" prefHeight="180.0" prefWidth="354.0" stylesheets="@barchart.css">
                                                         <xAxis>
-                                                          <CategoryAxis prefHeight="28.0" prefWidth="283.0" side="BOTTOM" fx:id="xAxis" />
+                                                          <CategoryAxis prefHeight="26.0" prefWidth="283.0" side="BOTTOM" fx:id="xAxis">
+                                                               <tickLabelFont>
+                                                                  <Font name="Mukta Regular" size="10.0" />
+                                                               </tickLabelFont></CategoryAxis>
                                                         </xAxis>
                                                         <yAxis>
                                                           <NumberAxis fx:id="yAxis" label="Quantity " prefHeight="133.0" prefWidth="41.0" side="LEFT">
@@ -169,9 +197,21 @@
                                                                </tickLabelFont></NumberAxis>
                                                         </yAxis>
                                                       </BarChart>
+                                                      <Label layoutX="64.0" layoutY="166.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #a2c3cd; -fx-background-radius: 5;" />
+                                                      <Label layoutX="187.0" layoutY="166.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #e4eb9d; -fx-background-radius: 5;" />
+                                                      <Label layoutX="90.0" layoutY="168.0" prefHeight="14.0" prefWidth="70.0" text="New Colthes" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="217.0" layoutY="168.0" prefHeight="14.0" prefWidth="106.0" text="Second hand clothes" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane layoutX="388.0" layoutY="4.0" prefHeight="190.0" prefWidth="140.0" style="-fx-background-color: #778899;">
+                                                <AnchorPane layoutX="388.0" prefHeight="197.0" prefWidth="142.0" style="-fx-background-color: #778899;">
                                                    <children>
                                                       <Label alignment="TOP_CENTER" layoutX="7.0" layoutY="8.0" prefHeight="5.0" prefWidth="128.0" text="Buying second hand items">
                                                          <font>
@@ -199,6 +239,7 @@
                                                          </font>
                                                       </Label>
                                                    </children></AnchorPane>
+                                                <Line endX="2.0" endY="-55.0" layoutX="375.0" layoutY="61.0" startX="2.0" startY="125.0" stroke="#909090" />
                                              </children>
                                           </AnchorPane>
                                        </bottom>
