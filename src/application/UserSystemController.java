@@ -155,6 +155,12 @@ public class UserSystemController  {
 	}
 	
 	 public void imageSelect(ActionEvent event) {
+		 bookLabel.setText("books cost $5.99");
+		 laptopLabel.setText("laptop cost $699.99");
+		 cookiesLabel.setText("Cookies cost $3.99");
+		 redpocketLabel.setText("Red Pocket cost $10.99");
+		 flowerLabel.setText("Peach Blossom cost $24.99");
+		 toybearLabel.setText("Toy Bear cost $45.99");
 		 double flowerprice=24.99;
 		 double bookprice=5.99;
 		 double laptopprice=699.99;
@@ -170,9 +176,9 @@ public class UserSystemController  {
 				Optional<ButtonType> option= alert.showAndWait();
 				if(option.get().equals(ButtonType.OK)) {
 					try {
+						bookLabel.setVisible(true);
 						
-						totalcost+=bookprice;
-						bookLabel.setText("books cost $5.99");
+						
 						
 					
 					} 
@@ -189,8 +195,8 @@ public class UserSystemController  {
 				Optional<ButtonType> option= alert2.showAndWait();
 				if(option.get().equals(ButtonType.OK)) {
 					try {
-						laptopLabel.setText("laptop cost $699.99");
-						totalcost+=laptopprice;
+						laptopLabel.setVisible(true);
+						
 						
 					} 
 					catch(Exception e) {
@@ -207,8 +213,8 @@ public class UserSystemController  {
 				Optional<ButtonType> option= alert3.showAndWait();
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
-						cookiesLabel.setText("Cookies cost $3.99");
-						totalcost+=cookiesprice;
+						cookiesLabel.setVisible(true);
+						
 						
 					} 
 					catch(Exception e) {
@@ -224,8 +230,8 @@ public class UserSystemController  {
 				Optional<ButtonType> option= alert4.showAndWait();
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
-						redpocketLabel.setText("Red Pocket cost $10.99");
-						totalcost+=redpocketPrice;
+						redpocketLabel.setVisible(true);
+					
 						
 					} 
 					catch(Exception e) {
@@ -241,8 +247,8 @@ public class UserSystemController  {
 				Optional<ButtonType> option= alert5.showAndWait();
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
-						flowerLabel.setText("Peach Blossom cost $24.99");
-						totalcost+=flowerprice;
+						flowerLabel.setVisible(true);
+						
 						
 					} 
 					catch(Exception e) {
@@ -258,8 +264,8 @@ public class UserSystemController  {
 				Optional<ButtonType> option= alert6.showAndWait();
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
-						toybearLabel.setText("Toy Bear cost $45.99");
-						totalcost+=toyBearprice;
+						toybearLabel.setVisible(true);
+						
 						
 					} 
 					catch(Exception e) {
@@ -267,8 +273,24 @@ public class UserSystemController  {
 					}
 					}
 
-				}	 	totalprice_label.setText("Total Price: "+String.valueOf(totalcost));
-
+				}	
+//count total price of item in cart page -------not work 
+	        for (int i=0;i<1;i++) {
+	        	if(bookLabel.isVisible()) {
+	        		totalcost+=bookprice;
+	        	}if(laptopLabel.isVisible()) {
+	        		totalcost+=laptopprice;
+	        	}if(cookiesLabel.isVisible()) {
+	        		totalcost+=cookiesprice;
+	        	}if(redpocketLabel.isVisible()) {
+	        		totalcost+=redpocketPrice;
+	        	}if(flowerLabel.isVisible()) {
+	        		totalcost+=flowerprice;
+	        	}if(toybearLabel.isVisible()) {
+	        		totalcost+=toyBearprice;
+	        	}totalprice_label.setText(String.valueOf("Total Cost: "+String.format("%.2f", totalcost)));
+	        }
+	        
 	 		}
 	 	}
 

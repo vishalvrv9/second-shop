@@ -82,7 +82,7 @@
                               <InnerShadow height="15.1" radius="7.7875" width="18.05" />
                            </effect>
                            <children>
-                              <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0">
+                              <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0" visible="false">
                                  <children>
                                     <BorderPane layoutX="3.0" layoutY="2.0" prefHeight="420.0" prefWidth="538.0">
                                        <top>
@@ -244,7 +244,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="chart_pane" layoutX="3.0" prefHeight="428.0" prefWidth="541.0" visible="false">
+                              <AnchorPane fx:id="chart_pane" layoutX="3.0" prefHeight="428.0" prefWidth="541.0">
                                  <children>
                                     <ImageView fitHeight="375.0" fitWidth="542.0" layoutY="40.0" opacity="0.46">
                                        <image>
@@ -256,32 +256,32 @@
                                        <font>
                                           <Font name="Xingkai SC Bold" size="36.0" />
                                        </font></Label>
-                                    <Label fx:id="bookLabel" layoutX="27.0" layoutY="71.0" prefHeight="20.0" prefWidth="203.0">
+                                    <Label fx:id="bookLabel" layoutX="27.0" layoutY="71.0" prefHeight="20.0" prefWidth="203.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="laptopLabel" layoutX="28.0" layoutY="100.0" prefHeight="18.0" prefWidth="212.0">
+                                    <Label fx:id="laptopLabel" layoutX="28.0" layoutY="100.0" prefHeight="18.0" prefWidth="212.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="cookiesLabel" layoutX="28.0" layoutY="128.0" prefHeight="15.0" prefWidth="220.0">
+                                    <Label fx:id="cookiesLabel" layoutX="28.0" layoutY="128.0" prefHeight="15.0" prefWidth="220.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="redpocketLabel" layoutX="28.0" layoutY="157.0" prefHeight="15.0" prefWidth="220.0">
+                                    <Label fx:id="redpocketLabel" layoutX="28.0" layoutY="157.0" prefHeight="15.0" prefWidth="220.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="flowerLabel" layoutX="28.0" layoutY="187.0" prefHeight="15.0" prefWidth="220.0">
+                                    <Label fx:id="flowerLabel" layoutX="28.0" layoutY="187.0" prefHeight="15.0" prefWidth="220.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="toybearLabel" layoutX="28.0" layoutY="219.0" prefHeight="15.0" prefWidth="220.0">
+                                    <Label fx:id="toybearLabel" layoutX="28.0" layoutY="219.0" prefHeight="15.0" prefWidth="220.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
