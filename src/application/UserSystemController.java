@@ -1,9 +1,17 @@
 package application;
 
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.Optional;
+
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
@@ -99,6 +107,53 @@ public class UserSystemController  {
     private Label lblBathNum;
     @FXML
     private TextField txtBuy;
+    @FXML
+	private  BarChart<String, Number> chart1;
+    @FXML
+	private  StackedBarChart<String,Number> chart2;
+    @FXML
+	private NumberAxis yAxis;
+	@FXML
+	private CategoryAxis xAxis;
+	@FXML
+	private NumberAxis yAxis1;
+	@FXML
+	private CategoryAxis xAxis1;
+	
+	
+	@FXML
+	public void initialize() {
+		
+		XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+		series1.setName("New Colthes");
+		series1.getData().add(new XYChart.Data<>("Carbon", 21.1));
+		series1.getData().add(new XYChart.Data<>("Energy", 38.8));
+		series1.getData().add(new XYChart.Data<>("Water", 78.5));
+		XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+		series2.setName("Second hand clothes");
+		series2.getData().add(new XYChart.Data<>("Carbon", 3.7));
+		series2.getData().add(new XYChart.Data<>("Energy", 4.8));
+		series2.getData().add(new XYChart.Data<>("Water", 1.2));
+		chart1.getData().addAll(series1,series2);
+
+	
+		XYChart.Series<String, Number> series3 = new XYChart.Series<>();
+		series3.setName("Resale");
+		series3.getData().add(new XYChart.Data<>("2017", 3));
+		series3.getData().add(new XYChart.Data<>("2018",5));
+		series3.getData().add(new XYChart.Data<>("2019",7));
+		series3.getData().add(new XYChart.Data<>("2020",9));
+		series3.getData().add(new XYChart.Data<>("2021",15));
+
+		XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+		series4.setName("Traditional donation");
+		series4.getData().add(new XYChart.Data<>("2017", 17));
+		series4.getData().add(new XYChart.Data<>("2018",19));
+		series4.getData().add(new XYChart.Data<>("2019",21));
+		series4.getData().add(new XYChart.Data<>("2020",18));
+		series4.getData().add(new XYChart.Data<>("2021",21));
+		chart2.getData().addAll(series3,series4);
+	}
 
 	
 // in cart page, check out button can confirm checking out;
