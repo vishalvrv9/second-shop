@@ -1,5 +1,6 @@
  package application;
 
+import java.time.LocalTime;
 import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,17 +40,17 @@ public class UserSystemController  {
     @FXML
     private ImageView imageBear;
     @FXML
-    private Label firstChartLabel;
+    private Label bookLabel;
     @FXML
-    private Label secondChartLabel;
+    private Label laptopLabel;
     @FXML
-    private Label thirdChartLabel;
+    private Label cookiesLabel;
     @FXML
-    private Label fouthChartLabel;
+    private Label redpocketLabel;
     @FXML
-    private Label fifthChartLabel;
+    private Label flowerLabel;
     @FXML
-    private Label sixthChartLabel;
+    private Label toybearLabel;
     
     @FXML
     private Button item_button;
@@ -87,9 +88,10 @@ public class UserSystemController  {
     private AnchorPane bear_pane;
     @FXML
     private StackPane user_pane;
+    @FXML
+    private Label lblTime;
 	
-
-    
+// in cart page, check out button can confirm checking out;
     public void checkOut() {
     	Alert alert=new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation message");
@@ -112,7 +114,7 @@ public class UserSystemController  {
 		
 	}
 
-    
+    // in user system, log out button has log out privilege;
 	public void logout() {
 			// alert to confirm log out message
 			Alert alert=new Alert(AlertType.INFORMATION);
@@ -131,10 +133,11 @@ public class UserSystemController  {
 			}
 			
 		}
-	
+	// use 'dashboard',' item','cart' button, user can switch different page of system.
 	public void switchPage(ActionEvent event) {
 		if (event.getSource()==dashboard_button) {
 			dashboard_pane.setVisible(true);
+			lblTime.setText(LocalTime.now().toString().substring(0,8));
 			chart_pane.setVisible(false);
 			item_pane.setVisible(false);
 			
@@ -152,18 +155,26 @@ public class UserSystemController  {
 	}
 	
 	 public void imageSelect(ActionEvent event) {
-		 
-	 
-	        if (event.getSource()==book_button) {
+		 double flowerprice=24.99;
+		 double bookprice=5.99;
+		 double laptopprice=699.99;
+		 double cookiesprice=3.99;
+		 double redpocketPrice=10.99;
+		 double toyBearprice=45.99;
+		 double totalcost=0;
+		if (event.getSource()==book_button) {
 				Alert alert=new Alert(AlertType.INFORMATION);
 				alert.setTitle("Confirmation message");
 				alert.setContentText("This one's price is $5.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
+				if(option.get().equals(ButtonType.OK)) {
 					try {
-						firstChartLabel.setText("Three Body");
-						System.exit(0);
+						
+						totalcost+=bookprice;
+						bookLabel.setText("books cost $5.99");
+						
+					
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -176,10 +187,11 @@ public class UserSystemController  {
 				alert2.setContentText("This one's price is $669.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert2.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
+				if(option.get().equals(ButtonType.OK)) {
 					try {
-						secondChartLabel.setText("iMac");
-						System.exit(0);
+						laptopLabel.setText("laptop cost $699.99");
+						totalcost+=laptopprice;
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -193,26 +205,28 @@ public class UserSystemController  {
 				alert3.setContentText("This one's price is $3.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert3.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						thirdChartLabel.setText("Cookies");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						cookiesLabel.setText("Cookies cost $3.99");
+						totalcost+=cookiesprice;
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
 					}
 					}
 				}
-	         if(event.getSource()==cookies_button){
+	        if(event.getSource()==redPocket_button){
 				Alert alert4=new Alert(AlertType.INFORMATION);
 				alert4.setTitle("Confirmation message");
 				alert4.setContentText("This one's price is $10.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert4.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						fouthChartLabel.setText("Red Pocket");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						redpocketLabel.setText("Red Pocket cost $10.99");
+						totalcost+=redpocketPrice;
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -225,10 +239,11 @@ public class UserSystemController  {
 				alert5.setContentText("This one's price is $24.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert5.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						fifthChartLabel.setText("Peach Blossom");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						flowerLabel.setText("Peach Blossom cost $24.99");
+						totalcost+=flowerprice;
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -241,21 +256,25 @@ public class UserSystemController  {
 				alert6.setContentText("This one's price is $45.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert6.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						sixthChartLabel.setText("Toy Bear");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						toybearLabel.setText("Toy Bear cost $45.99");
+						totalcost+=toyBearprice;
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
 					}
 					}
-				}
-	 			}
+				}	 	totalprice_label.setText("Total Price: "+String.valueOf(totalcost));
+
+	 		}
+	 	}
+	 
 
 	
 
 	
-}
+
 
 

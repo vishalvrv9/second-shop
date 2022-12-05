@@ -5,11 +5,13 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="loginpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane fx:id="loginpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <Button layoutX="291.0" layoutY="299.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="67.0" text="LOGIN" />
       <TextField fx:id="txtUsername" layoutX="291.0" layoutY="155.0" promptText="username" />
@@ -19,19 +21,24 @@
             <Font name="Trebuchet MS" size="10.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="-2.0" prefHeight="404.0" prefWidth="249.0" style="-fx-background-color: #778899;">
+      <AnchorPane layoutY="-2.0" prefHeight="404.0" prefWidth="238.0" style="-fx-background-color: #778899;">
          <children>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second">
+            <ImageView fitHeight="160.0" fitWidth="251.0" layoutY="244.0">
+               <image>
+                  <Image url="@../../bin/medias/pikrepo.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second">
                <font>
                   <Font name="Impact" size="72.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="-2.0" layoutY="185.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Shop" textAlignment="CENTER">
+            <Text fill="#575656" layoutX="-17.0" layoutY="199.0" rotate="90.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Shop" textAlignment="CENTER" wrappingWidth="190.1328125">
                <font>
-                  <Font name="Impact" size="72.0" />
+                  <Font name="Impact" size="77.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="-2.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="System">
+            <Text fill="WHITE" layoutX="17.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="System" wrappingWidth="217.65234375">
                <font>
                   <Font name="Impact" size="72.0" />
                </font>
