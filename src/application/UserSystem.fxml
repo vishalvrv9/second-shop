@@ -5,7 +5,7 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -82,7 +82,7 @@
                               <InnerShadow height="15.1" radius="7.7875" width="18.05" />
                            </effect>
                            <children>
-                              <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0" visible="false">
+                              <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0">
                                  <children>
                                     <BorderPane layoutX="3.0" layoutY="2.0" prefHeight="420.0" prefWidth="538.0">
                                        <top>
@@ -107,13 +107,13 @@
                                                       <Label fx:id="lblBuy" layoutX="2.0" layoutY="3.0" prefHeight="23.0" prefWidth="222.0" text="How many second hand clothes " />
                                                       <Label fx:id="lblTree" layoutX="53.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Plant" />
                                                       <Label fx:id="lblBath" layoutY="134.0" prefHeight="18.0" prefWidth="105.0" text="Saving water for  " />
-                                                      <Button fx:id="btnView" layoutX="43.0" layoutY="50.0" minWidth="40.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #778899; -fx-font-size: 9; -fx-background-radius: 1px20px;" text="which means you">
+                                                      <Button fx:id="btnView" layoutX="43.0" layoutY="50.0" minWidth="40.0" mnemonicParsing="false" onAction="#clickButton" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #778899; -fx-font-size: 9; -fx-background-radius: 1px20px;" text="which means you">
                                                          <font>
                                                             <Font name="BM JUA OTF" size="10.0" />
                                                          </font></Button>
-                                                      <TextField fx:id="txtBuy" layoutX="185.0" layoutY="22.0" prefHeight="26.0" prefWidth="27.0" style="-fx-background-radius: 5; -fx-border-color: #778899;" />
-                                                      <Label fx:id="lblTreeNum" layoutX="118.0" layoutY="89.0" prefHeight="18.0" prefWidth="30.0" text="1" />
-                                                      <Label fx:id="lblBathNum" layoutX="117.0" layoutY="134.0" prefHeight="18.0" prefWidth="33.0" text="2" />
+                                                      <TextField fx:id="txtBuy" alignment="CENTER" layoutX="168.0" layoutY="22.0" prefHeight="26.0" prefWidth="57.0" style="-fx-background-radius: 5; -fx-border-color: #778899;" />
+                                                      <Label fx:id="lblTreeNum" alignment="CENTER" layoutX="85.0" layoutY="89.0" prefHeight="18.0" prefWidth="94.0" text="0" />
+                                                      <Label fx:id="lblBathNum" alignment="CENTER" layoutX="97.0" layoutY="134.0" prefHeight="18.0" prefWidth="80.0" text="0" />
                                                       <Label layoutX="3.0" layoutY="26.0" prefHeight="18.0" prefWidth="162.0" text="have you bought this year?" />
                                                       <Label fx:id="lblTree1" layoutX="179.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Trees" />
                                                       <Label fx:id="lblTree11" layoutX="179.0" layoutY="134.0" prefHeight="18.0" prefWidth="39.0" text="Baths" />
@@ -127,7 +127,14 @@
                                              <children>
                                                 <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="185.0" prefWidth="275.0">
                                                    <children>
-                                                      <PieChart fx:id="chart2" layoutX="51.0" layoutY="9.0" prefHeight="168.0" prefWidth="200.0" />
+                                                      <StackedBarChart fx:id="chart2" layoutX="38.0" layoutY="18.0" prefHeight="50.0" prefWidth="50.0">
+                                                        <xAxis>
+                                                          <CategoryAxis side="BOTTOM" />
+                                                        </xAxis>
+                                                        <yAxis>
+                                                          <NumberAxis side="LEFT" />
+                                                        </yAxis>
+                                                      </StackedBarChart>
                                                    </children>
                                                 </AnchorPane>
                                              </children>
@@ -244,7 +251,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="chart_pane" layoutX="3.0" prefHeight="428.0" prefWidth="541.0">
+                              <AnchorPane fx:id="chart_pane" layoutX="3.0" prefHeight="428.0" prefWidth="541.0" visible="false">
                                  <children>
                                     <ImageView fitHeight="375.0" fitWidth="542.0" layoutY="40.0" opacity="0.46">
                                        <image>

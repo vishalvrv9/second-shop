@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
@@ -90,6 +91,15 @@ public class UserSystemController  {
     private StackPane user_pane;
     @FXML
     private Label lblTime;
+    @FXML
+    private Button btnView;
+    @FXML
+    private Label lblTreeNum;
+    @FXML
+    private Label lblBathNum;
+    @FXML
+    private TextField txtBuy;
+
 	
 // in cart page, check out button can confirm checking out;
     public void checkOut() {
@@ -292,10 +302,19 @@ public class UserSystemController  {
 	        }
 	        
 	 		}
-	 	}
+	 	
 
-				
-	         
+        public void clickButton(ActionEvent event) { 
+	 
+	     if (event.getSource() == btnView){
+   	       System.out.println("view");
+		 String test = txtBuy.getText();
+		 int i = Integer.parseInt(test);
+		 lblTreeNum.setText(String.format("%.2f",i*0.2));
+		 lblBathNum.setText(String.format("%.2f",i*3.8));				 
+    }	
+	 }		
+}    
 	
 
 
