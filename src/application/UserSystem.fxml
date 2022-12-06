@@ -138,13 +138,12 @@
                                           </AnchorPane>
                                        </left>
                                        <center>
-                                          <AnchorPane prefHeight="185.0" prefWidth="296.0" BorderPane.alignment="CENTER">
+                                          </center>AnchorPane prefHeight="185.0" prefWidth="296.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="178.0" prefWidth="284.0">
-                                                   <children>
-                                                      <StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="154.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
-                                                        <xAxis>
-                                                          <CategoryAxis prefHeight="23.0" prefWidth="218.0" side="BOTTOM" fx:id="xAxis1">
+                                                </children>AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="178.0" prefWidth="284.0">
+                                                   </children>
+                                                      </StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="154.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
+                                                        </xAxis>
                                                                <tickLabelFont>
                                                                   <Font name="BM JUA OTF" size="8.0" />
                                                                </tickLabelFont></CategoryAxis>
@@ -246,7 +245,7 @@
                                     </BorderPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="item_pane" layoutX="1.0" layoutY="1.0" prefHeight="426.0" prefWidth="543.0" visible="false">
+                              <AnchorPane fx:id="item_pane" layoutX="1.0" layoutY="1.0" prefHeight="426.0" prefWidth="543.0">
                                  <children>
                                     <AnchorPane layoutX="-4.0" layoutY="-5.0" prefHeight="428.0" prefWidth="547.0">
                                        <children>
@@ -276,7 +275,7 @@
                                              </children></AnchorPane>
                                           <AnchorPane fx:id="bear_pane" layoutX="401.0" layoutY="214.0" prefHeight="112.0" prefWidth="94.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
-                                                <ImageView fx:id="imageBear" fitHeight="98.0" fitWidth="84.0" layoutX="1.0" layoutY="1.0">
+                                                                                                <ImageView fx:id="imageBear" fitHeight="98.0" fitWidth="84.0" layoutX="1.0" layoutY="1.0">
                                                    <image>
                                                       <Image url="@../medias/BearToy.png" />
                                                    </image>
