@@ -1,25 +1,28 @@
- package application;
+package application;
 
-import java.io.File;
-import java.net.URL;
+import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-public class UserSystemController implements Initializable {
+public class UserSystemController  {
 
 	@FXML
     private Button chart_button;
@@ -46,17 +49,17 @@ public class UserSystemController implements Initializable {
     @FXML
     private ImageView imageBear;
     @FXML
-    private Label firstChartLabel;
+    private Label bookLabel;
     @FXML
-    private Label secondChartLabel;
+    private Label laptopLabel;
     @FXML
-    private Label thirdChartLabel;
+    private Label cookiesLabel;
     @FXML
-    private Label fouthChartLabel;
+    private Label redpocketLabel;
     @FXML
-    private Label fifthChartLabel;
+    private Label flowerLabel;
     @FXML
-    private Label sixthChartLabel;
+    private Label toybearLabel;
     
     @FXML
     private Button item_button;
@@ -92,21 +95,68 @@ public class UserSystemController implements Initializable {
     private AnchorPane flower_pane;
     @FXML
     private AnchorPane bear_pane;
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        imageBook.setImage(new Image((new File("medias/Book.png")).toURI().toString()));
-        imageLaptop.setImage(new Image((new File("medias/Laptop.png")).toURI().toString()));
-        imageCookies.setImage(new Image((new File("medias/Cookies.png")).toURI().toString()));
-        imageRedpocket.setImage(new Image((new File("medias/RedPocket.png")).toURI().toString()));
-        imageFlower.setImage(new Image((new File("medias/Flowers.png")).toURI().toString()));
-        imageBear.setImage(new Image((new File("medias/BearToy.png")).toURI().toString()));
-	     
-	}
+    @FXML
+    private StackPane user_pane;
+    @FXML
+    private Label lblTime;
+    @FXML
+    private Button btnView;
+    @FXML
+    private Label lblTreeNum;
+    @FXML
+    private Label lblBathNum;
+    @FXML
+    private TextField txtBuy;
+    @FXML
+	private  BarChart<String, Number> chart1;
+    @FXML
+	private  StackedBarChart<String,Number> chart2;
+    @FXML
+	private NumberAxis yAxis;
+	@FXML
+	private CategoryAxis xAxis;
+	@FXML
+	private NumberAxis yAxis1;
+	@FXML
+	private CategoryAxis xAxis1;
 	
 	
+	@FXML
+	public void initialize() {
+		
+		XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+		series1.setName("New Colthes");
+		series1.getData().add(new XYChart.Data<>("Carbon", 21.1));
+		series1.getData().add(new XYChart.Data<>("Energy", 38.8));
+		series1.getData().add(new XYChart.Data<>("Water", 78.5));
+		XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+		series2.setName("Second hand clothes");
+		series2.getData().add(new XYChart.Data<>("Carbon", 3.7));
+		series2.getData().add(new XYChart.Data<>("Energy", 4.8));
+		series2.getData().add(new XYChart.Data<>("Water", 1.2));
+		chart1.getData().addAll(series1,series2);
 
-    
+	
+		XYChart.Series<String, Number> series3 = new XYChart.Series<>();
+		series3.setName("Resale");
+		series3.getData().add(new XYChart.Data<>("2017", 3));
+		series3.getData().add(new XYChart.Data<>("2019",7));
+		series3.getData().add(new XYChart.Data<>("2021",15));
+		series3.getData().add(new XYChart.Data<>("2023",27));
+		series3.getData().add(new XYChart.Data<>("2025",47));
+
+		XYChart.Series<String, Number> series4 = new XYChart.Series<>();
+		series4.setName("Traditional donation");
+		series4.getData().add(new XYChart.Data<>("2017", 17));
+		series4.getData().add(new XYChart.Data<>("2019",21));
+		series4.getData().add(new XYChart.Data<>("2021",21));
+		series4.getData().add(new XYChart.Data<>("2023",26));
+		series4.getData().add(new XYChart.Data<>("2025",30));
+		chart2.getData().addAll(series3,series4);
+	}
+
+	
+// in cart page, check out button can confirm checking out;
     public void checkOut() {
     	Alert alert=new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation message");
@@ -129,7 +179,7 @@ public class UserSystemController implements Initializable {
 		
 	}
 
-    
+    // in user system, log out button has log out privilege;
 	public void logout() {
 			// alert to confirm log out message
 			Alert alert=new Alert(AlertType.INFORMATION);
@@ -148,10 +198,11 @@ public class UserSystemController implements Initializable {
 			}
 			
 		}
-	
+	// use 'dashboard',' item','cart' button, user can switch different page of system.
 	public void switchPage(ActionEvent event) {
 		if (event.getSource()==dashboard_button) {
 			dashboard_pane.setVisible(true);
+			lblTime.setText(LocalTime.now().toString().substring(0,8));
 			chart_pane.setVisible(false);
 			item_pane.setVisible(false);
 			
@@ -169,18 +220,32 @@ public class UserSystemController implements Initializable {
 	}
 	
 	 public void imageSelect(ActionEvent event) {
-		 
-	 
-	        if (event.getSource()==book_button) {
+		 bookLabel.setText("books cost $5.99");
+		 laptopLabel.setText("laptop cost $699.99");
+		 cookiesLabel.setText("Cookies cost $3.99");
+		 redpocketLabel.setText("Red Pocket cost $10.99");
+		 flowerLabel.setText("Peach Blossom cost $24.99");
+		 toybearLabel.setText("Toy Bear cost $45.99");
+		 double flowerprice=24.99;
+		 double bookprice=5.99;
+		 double laptopprice=699.99;
+		 double cookiesprice=3.99;
+		 double redpocketPrice=10.99;
+		 double toyBearprice=45.99;
+		 double totalcost=0;
+		if (event.getSource()==book_button) {
 				Alert alert=new Alert(AlertType.INFORMATION);
 				alert.setTitle("Confirmation message");
 				alert.setContentText("This one's price is $5.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
+				if(option.get().equals(ButtonType.OK)) {
 					try {
-						firstChartLabel.setText("Three Body");
-						System.exit(0);
+						bookLabel.setVisible(true);
+						
+						
+						
+					
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -193,10 +258,11 @@ public class UserSystemController implements Initializable {
 				alert2.setContentText("This one's price is $669.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert2.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
+				if(option.get().equals(ButtonType.OK)) {
 					try {
-						secondChartLabel.setText("iMac");
-						System.exit(0);
+						laptopLabel.setVisible(true);
+						
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -210,26 +276,28 @@ public class UserSystemController implements Initializable {
 				alert3.setContentText("This one's price is $3.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert3.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						thirdChartLabel.setText("Cookies");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						cookiesLabel.setVisible(true);
+						
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
 					}
 					}
 				}
-	         if(event.getSource()==cookies_button){
+	        if(event.getSource()==redPocket_button){
 				Alert alert4=new Alert(AlertType.INFORMATION);
 				alert4.setTitle("Confirmation message");
 				alert4.setContentText("This one's price is $10.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert4.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						fouthChartLabel.setText("Red Pocket");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						redpocketLabel.setVisible(true);
+					
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -242,10 +310,11 @@ public class UserSystemController implements Initializable {
 				alert5.setContentText("This one's price is $24.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert5.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						fifthChartLabel.setText("Peach Blossom");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						flowerLabel.setVisible(true);
+						
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -258,21 +327,49 @@ public class UserSystemController implements Initializable {
 				alert6.setContentText("This one's price is $45.99,are you sure to pick one?");
 				//condition statement to confirm log out option 
 				Optional<ButtonType> option= alert6.showAndWait();
-				if(option.get().equals(ButtonType.YES)) {
-					try {
-						sixthChartLabel.setText("Toy Bear");
-						System.exit(0);
+				if(option.get().equals(ButtonType.OK)) {
+					try { 
+						toybearLabel.setVisible(true);
+						
+						
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
 					}
 					}
-				}
-	 			}
 
-	
+				}	
+//count total price of item in cart page -------not work 
+	        for (int i=0;i<1;i++) {
+	        	if(bookLabel.isVisible()) {
+	        		totalcost+=bookprice;
+	        	}if(laptopLabel.isVisible()) {
+	        		totalcost+=laptopprice;
+	        	}if(cookiesLabel.isVisible()) {
+	        		totalcost+=cookiesprice;
+	        	}if(redpocketLabel.isVisible()) {
+	        		totalcost+=redpocketPrice;
+	        	}if(flowerLabel.isVisible()) {
+	        		totalcost+=flowerprice;
+	        	}if(toybearLabel.isVisible()) {
+	        		totalcost+=toyBearprice;
+	        	}totalprice_label.setText(String.valueOf("Total Cost: "+String.format("%.2f", totalcost)));
+	        }
+	        
+	 		}
+	 	
 
+        public void clickButton(ActionEvent event) { 
+	 
+	     if (event.getSource() == btnView){
+   	       System.out.println("view");
+		 String test = txtBuy.getText();
+		 int i = Integer.parseInt(test);
+		 lblTreeNum.setText(String.format("%.2f",i*0.2));
+		 lblBathNum.setText(String.format("%.2f",i*3.8));				 
+    }	
+	 }		
+}    
 	
-}
 
 

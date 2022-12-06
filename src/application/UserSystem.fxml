@@ -2,8 +2,13 @@
 
 <!-- <?import com.gluonhq.charm.glisten.control.Icon?> -->
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -15,11 +20,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="userpage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserSystemController">
+<StackPane fx:id="userpage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserSystemController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <BorderPane prefHeight="462.0" prefWidth="739.0">
          <top>
-            <AnchorPane prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="25.0" prefWidth="725.0" BorderPane.alignment="CENTER">
                <children>
                   <!-- <Icon content="ACCOUNT_BOX" layoutX="8.0" layoutY="4.0" /> -->
                   <Text layoutX="36.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User System Dashboard" />
@@ -27,7 +32,7 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="370.0" prefWidth="180.0" style="-fx-background-color: #778899;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="436.0" prefWidth="180.0" style="-fx-background-color: #778899;" BorderPane.alignment="CENTER">
                <children>
                   <Text fill="WHITE" layoutX="5.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
                      <font>
@@ -68,25 +73,184 @@
             </AnchorPane>
          </left>
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="431.0" prefWidth="548.0" BorderPane.alignment="CENTER">
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="7.0" layoutY="10.0" prefHeight="353.0" prefWidth="406.0" style="-fx-background-color: white;">
+                        <AnchorPane layoutX="3.0" layoutY="4.0" prefHeight="410.0" prefWidth="520.0" style="-fx-background-color: white;">
                            <effect>
                               <InnerShadow height="15.1" radius="7.7875" width="18.05" />
                            </effect>
                            <children>
-                              <AnchorPane fx:id="dashboard_pane" prefHeight="352.0" prefWidth="406.0">
+                              <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0">
                                  <children>
-                                    <ImageView fx:id="dashboard_image" fitHeight="327.0" fitWidth="200.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+                                    <BorderPane layoutX="3.0" layoutY="2.0" prefHeight="420.0" prefWidth="538.0">
+                                       <top>
+                                          <AnchorPane prefHeight="0.0" prefWidth="538.0" style="-fx-border-color: #778899;" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label fx:id="lblDashboard" layoutX="8.0" layoutY="1.0" prefHeight="19.0" prefWidth="158.0" text="Dashboard   Welcome!">
+                                                   <font>
+                                                      <Font name="Avenir Next Bold" size="13.0" />
+                                                   </font></Label>
+                                                <Label fx:id="lblTime" alignment="TOP_RIGHT" layoutX="404.0" layoutY="1.0" prefHeight="18.0" prefWidth="120.0" text="Time">
+                                                   <font>
+                                                      <Font name="Avenir Next Condensed Bold" size="13.0" />
+                                                   </font></Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </top>
+                                       <left>
+                                          <AnchorPane prefHeight="201.0" prefWidth="251.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="158.0" prefWidth="242.0">
+                                                   <children>
+                                                      <Label fx:id="lblBuy" layoutX="2.0" layoutY="3.0" prefHeight="23.0" prefWidth="222.0" text="How many second hand clothes " />
+                                                      <Label fx:id="lblTree" layoutX="53.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Plant" />
+                                                      <Label fx:id="lblBath" layoutY="134.0" prefHeight="18.0" prefWidth="105.0" text="Saving water for  " />
+                                                      <Button fx:id="btnView" layoutX="43.0" layoutY="50.0" minWidth="40.0" mnemonicParsing="false" onAction="#clickButton" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #778899; -fx-font-size: 9; -fx-background-radius: 1px20px;" text="which means you" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="10.0" />
+                                                         </font></Button>
+                                                      <TextField fx:id="txtBuy" alignment="CENTER" layoutX="168.0" layoutY="24.0" prefHeight="26.0" prefWidth="45.0" style="-fx-background-radius: 5;">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="13.0" />
+                                                         </font></TextField>
+                                                      <Label fx:id="lblTreeNum" alignment="CENTER" layoutX="95.0" layoutY="89.0" prefHeight="18.0" prefWidth="85.0">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="13.0" />
+                                                         </font></Label>
+                                                      <Label fx:id="lblBathNum" alignment="CENTER" layoutX="98.0" layoutY="134.0" prefHeight="18.0" prefWidth="80.0">
+                                                         <font>
+                                                            <Font name="BM JUA OTF" size="13.0" />
+                                                         </font></Label>
+                                                      <Label layoutX="3.0" layoutY="26.0" prefHeight="18.0" prefWidth="162.0" text="have you bought this year?" />
+                                                      <Label fx:id="lblTree1" layoutX="179.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Trees" />
+                                                      <Label fx:id="lblTree11" layoutX="179.0" layoutY="134.0" prefHeight="18.0" prefWidth="39.0" text="Baths" />
+                                                   </children>
+                                                </AnchorPane>
+                                                <Label layoutX="10.0" layoutY="187.0" prefHeight="18.0" prefWidth="237.0" text="The trail of new and used clothes" textFill="LIGHTSLATEGRAY">
+                                                   <font>
+                                                      <Font name="BM HANNA Pro OTF" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Line endX="135.0" endY="-8.0" layoutX="108.0" layoutY="180.0" startX="-101.0" startY="-8.0" stroke="#909090" />
+                                             </children>
+                                          </AnchorPane>
+                                       </left>
+                                       <center>
+                                          <AnchorPane prefHeight="185.0" prefWidth="296.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="178.0" prefWidth="284.0">
+                                                   <children>
+                                                      <StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="154.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
+                                                        <xAxis>
+                                                          <CategoryAxis prefHeight="23.0" prefWidth="218.0" side="BOTTOM" fx:id="xAxis1">
+                                                               <tickLabelFont>
+                                                                  <Font name="BM JUA OTF" size="8.0" />
+                                                               </tickLabelFont></CategoryAxis>
+                                                        </xAxis>
+                                                        <yAxis>
+                                                          <NumberAxis fx:id="yAxis1" label="Value" prefHeight="110.0" prefWidth="40.0" side="LEFT">
+                                                               <tickLabelFont>
+                                                                  <Font name="BM HANNA Pro OTF" size="8.0" />
+                                                               </tickLabelFont></NumberAxis>
+                                                        </yAxis>
+                                                      </StackedBarChart>
+                                                      <Label layoutX="43.0" layoutY="6.0" prefHeight="18.0" prefWidth="234.0" text="Graph of market size and estimated growth" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font name="BM HANNA Pro OTF" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="58.0" layoutY="171.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #aad3c0; -fx-background-radius: 5;" />
+                                                      <Label layoutX="142.0" layoutY="171.0" prefHeight="0.0" prefWidth="15.0" style="-fx-background-color: #a2c3cd; -fx-background-radius: 5;" />
+                                                      <Label layoutX="82.0" layoutY="173.0" text="Resale" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="166.0" layoutY="171.0" prefHeight="18.0" prefWidth="96.0" text="Traditional donation" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane prefHeight="197.0" prefWidth="538.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="182.0" prefWidth="305.0">
+                                                   <children>
+                                                      <BarChart fx:id="chart1" layoutX="-2.0" prefHeight="180.0" prefWidth="354.0" stylesheets="@barchart.css">
+                                                        <xAxis>
+                                                          <CategoryAxis prefHeight="26.0" prefWidth="283.0" side="BOTTOM" fx:id="xAxis">
+                                                               <tickLabelFont>
+                                                                  <Font name="Mukta Regular" size="10.0" />
+                                                               </tickLabelFont></CategoryAxis>
+                                                        </xAxis>
+                                                        <yAxis>
+                                                          <NumberAxis fx:id="yAxis" label="Quantity " prefHeight="133.0" prefWidth="41.0" side="LEFT">
+                                                               <tickLabelFont>
+                                                                  <Font name="BM HANNA Pro OTF" size="8.0" />
+                                                               </tickLabelFont></NumberAxis>
+                                                        </yAxis>
+                                                      </BarChart>
+                                                      <Label layoutX="64.0" layoutY="166.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #a2c3cd; -fx-background-radius: 5;" />
+                                                      <Label layoutX="187.0" layoutY="166.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #e4eb9d; -fx-background-radius: 5;" />
+                                                      <Label layoutX="90.0" layoutY="168.0" prefHeight="14.0" prefWidth="70.0" text="New Colthes" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="217.0" layoutY="168.0" prefHeight="14.0" prefWidth="106.0" text="Second hand clothes" textFill="LIGHTSLATEGRAY">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="388.0" prefHeight="197.0" prefWidth="142.0" style="-fx-background-color: #778899;">
+                                                   <children>
+                                                      <Label alignment="TOP_CENTER" layoutX="7.0" layoutY="8.0" prefHeight="5.0" prefWidth="128.0" text="Buying second hand items">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="14.0" layoutY="162.0" prefHeight="5.0" prefWidth="128.0" text="Carbon footprint reduct">
+                                                         <font>
+                                                            <Font size="11.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="14.0" layoutY="82.0" prefHeight="5.0" prefWidth="128.0" text="Carbon dioxide emissions">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="48.0" layoutY="22.0" prefHeight="60.0" prefWidth="47.0" text="17.4">
+                                                         <font>
+                                                            <Font name="BM DoHyeon OTF" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="48.0" layoutY="95.0" prefHeight="67.0" prefWidth="47.0" text="82%">
+                                                         <font>
+                                                            <Font name="BM DoHyeon OTF" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children></AnchorPane>
+                                                <Line endX="2.0" endY="-55.0" layoutX="375.0" layoutY="61.0" startX="2.0" startY="125.0" stroke="#909090" />
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="item_pane" layoutX="1.0" layoutY="1.0" prefHeight="351.0" prefWidth="404.0">
+                              <AnchorPane fx:id="item_pane" layoutX="1.0" layoutY="1.0" prefHeight="426.0" prefWidth="543.0" visible="false">
                                  <children>
-                                    <AnchorPane layoutX="-4.0" layoutY="-5.0" prefHeight="351.0" prefWidth="407.0">
+                                    <AnchorPane layoutX="-4.0" layoutY="-5.0" prefHeight="428.0" prefWidth="547.0">
                                        <children>
-                                          <AnchorPane fx:id="pane3" layoutX="281.0" layoutY="36.0" prefHeight="114.0" prefWidth="92.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="cookies_pane" layoutX="402.0" layoutY="35.0" prefHeight="114.0" prefWidth="92.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
                                                 <ImageView fx:id="imageCookies" fitHeight="99.0" fitWidth="86.0" layoutX="2.0" layoutY="4.0">
                                                    <image>
@@ -94,7 +258,7 @@
                                                    </image>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="pane5" layoutX="151.0" layoutY="188.0" prefHeight="111.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="flower_pane" layoutX="217.0" layoutY="215.0" prefHeight="111.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
                                                 <ImageView fx:id="imageFlower" fitHeight="98.0" fitWidth="83.0" layoutX="2.0" layoutY="4.0">
                                                    <image>
@@ -102,7 +266,7 @@
                                                    </image>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="pane4" layoutX="22.0" layoutY="188.0" prefHeight="112.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="redpocket_pane" layoutX="41.0" layoutY="214.0" prefHeight="112.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
                                                 <ImageView fx:id="imageRedpocket" fitHeight="99.0" fitWidth="71.0" layoutX="12.0" layoutY="7.0">
                                                    <image>
@@ -110,7 +274,7 @@
                                                    </image>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="pane6" layoutX="282.0" layoutY="188.0" prefHeight="112.0" prefWidth="94.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="bear_pane" layoutX="401.0" layoutY="214.0" prefHeight="112.0" prefWidth="94.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
                                                 <ImageView fx:id="imageBear" fitHeight="98.0" fitWidth="84.0" layoutX="1.0" layoutY="1.0">
                                                    <image>
@@ -118,7 +282,7 @@
                                                    </image>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="pane2" layoutX="151.0" layoutY="36.0" prefHeight="113.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="laptop_pane" layoutX="217.0" layoutY="36.0" prefHeight="113.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
                                                 <ImageView fx:id="imageLaptop" fitHeight="100.0" fitWidth="85.0" layoutX="5.0" layoutY="7.0">
                                                    <image>
@@ -126,7 +290,7 @@
                                                    </image>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="pane1" layoutX="23.0" layoutY="35.0" prefHeight="114.0" prefWidth="93.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="book_pane" layoutX="42.0" layoutY="36.0" prefHeight="114.0" prefWidth="93.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
                                                 <ImageView fx:id="imageBook" fitHeight="114.0" fitWidth="92.0" layoutX="1.0">
                                                    <image>
@@ -134,34 +298,63 @@
                                                    </image>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <Button fx:id="button1" layoutX="42.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="button2" layoutX="172.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="button3" layoutX="302.0" layoutY="149.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="button4" layoutX="42.0" layoutY="299.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="button5" layoutX="172.0" layoutY="299.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="button6" layoutX="302.0" layoutY="299.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
+                                          <Button fx:id="book_button" layoutX="62.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
+                                          <Button fx:id="laptop_button" layoutX="238.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
+                                          <Button fx:id="cookies_button" layoutX="421.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
+                                          <Button fx:id="redPocket_button" layoutX="62.0" layoutY="326.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
+                                          <Button fx:id="flower_button" layoutX="238.0" layoutY="326.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
+                                          <Button fx:id="bear_button" layoutX="421.0" layoutY="326.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="chart_pane" layoutX="-2.0" layoutY="-2.0" prefHeight="356.0" prefWidth="408.0" visible="false">
+                              <AnchorPane fx:id="chart_pane" layoutX="3.0" prefHeight="428.0" prefWidth="541.0" visible="false">
                                  <children>
-                                    <Button fx:id="checkout_button" layoutX="318.0" layoutY="294.0" mnemonicParsing="false" onAction="#checkOut" style="-fx-background-color: #778899;" text="Check Out" />
-                                    <Label fx:id="totalprice_label" layoutX="38.0" layoutY="301.0" text="Total Price:                                ">
+                                    <ImageView fitHeight="375.0" fitWidth="542.0" layoutY="40.0" opacity="0.46">
+                                       <image>
+                                          <Image url="@../../bin/medias/catbackground_cart.jpeg" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="checkout_button" layoutX="442.0" layoutY="373.0" mnemonicParsing="false" onAction="#checkOut" style="-fx-background-color: #778899;" text="Check Out" />
+                                    <Label fx:id="totalprice_label" layoutX="14.0" layoutY="337.0" prefHeight="54.0" prefWidth="279.0" text="Total Price:">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Xingkai SC Bold" size="36.0" />
                                        </font></Label>
-                                    <Label layoutX="43.0" layoutY="33.0" prefHeight="23.0" prefWidth="181.0" text="Your Cart:">
+                                    <Label fx:id="bookLabel" layoutX="27.0" layoutY="71.0" prefHeight="20.0" prefWidth="203.0" visible="false">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="item1" layoutX="43.0" layoutY="69.0" text="                                            " />
-                                    <Label fx:id="item2" layoutX="44.0" layoutY="98.0" text="                                        " />
-                                    <Label fx:id="item3" layoutX="44.0" layoutY="124.0" text="                                       " />
-                                    <Label fx:id="item4" layoutX="44.0" layoutY="152.0" text="                                          " />
-                                    <Label fx:id="item5" layoutX="44.0" layoutY="178.0" text="                                              " />
-                                    <Label fx:id="item6" layoutX="44.0" layoutY="218.0" text="                                         " />
+                                    <Label fx:id="laptopLabel" layoutX="28.0" layoutY="100.0" prefHeight="18.0" prefWidth="212.0" visible="false">
+                                       <font>
+                                          <Font name="Xingkai SC Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cookiesLabel" layoutX="28.0" layoutY="128.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                       <font>
+                                          <Font name="Xingkai SC Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="redpocketLabel" layoutX="28.0" layoutY="157.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                       <font>
+                                          <Font name="Xingkai SC Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="flowerLabel" layoutX="28.0" layoutY="187.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                       <font>
+                                          <Font name="Xingkai SC Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="toybearLabel" layoutX="28.0" layoutY="219.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                       <font>
+                                          <Font name="Xingkai SC Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cookiesLabel1" layoutX="14.0" layoutY="5.0" prefHeight="15.0" prefWidth="220.0" text="User Cart">
+                                       <font>
+                                          <Font name="Xingkai SC Bold" size="48.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children>
