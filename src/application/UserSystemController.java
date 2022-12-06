@@ -1,10 +1,8 @@
 package application;
 
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.Optional;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
@@ -152,8 +150,8 @@ public class UserSystemController  {
 		series4.getData().add(new XYChart.Data<>("2021",21));
 		series4.getData().add(new XYChart.Data<>("2023",26));
 		series4.getData().add(new XYChart.Data<>("2025",30));
-		chart2.getData().addAll(series3,series4);
-	}
+		chart2.getData().addAll(series3,series4);}
+	
 
 	
 // in cart page, check out button can confirm checking out;
