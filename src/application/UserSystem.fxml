@@ -82,7 +82,7 @@
                               <InnerShadow height="15.1" radius="7.7875" width="18.05" />
                            </effect>
                            <children>
-                              <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0"
+                              <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0">
                                  <children>
                                     <BorderPane layoutX="3.0" layoutY="2.0" prefHeight="420.0" prefWidth="538.0">
                                        <top>
@@ -138,13 +138,12 @@
                                           </AnchorPane>
                                        </left>
                                        <center>
-                                          <AnchorPane prefHeight="185.0" prefWidth="296.0" BorderPane.alignment="CENTER">
+                                          </center>AnchorPane prefHeight="185.0" prefWidth="296.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="185.0" prefWidth="275.0">
-                                                   <children>
-                                                      <StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="159.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
-                                                        <xAxis>
-                                                           <CategoryAxis prefHeight="23.0" prefWidth="218.0" side="BOTTOM" fx:id="xAxis1">
+                                                </children>AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="178.0" prefWidth="284.0">
+                                                   </children>
+                                                      </StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="154.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
+                                                        </xAxis>
                                                                <tickLabelFont>
                                                                   <Font name="BM JUA OTF" size="8.0" />
                                                                </tickLabelFont></CategoryAxis>
@@ -239,6 +238,7 @@
                                                          </font>
                                                       </Label>
                                                    </children></AnchorPane>
+                                                <Line endX="2.0" endY="-55.0" layoutX="375.0" layoutY="61.0" startX="2.0" startY="125.0" stroke="#909090" />
                                              </children>
                                           </AnchorPane>
                                        </bottom>
