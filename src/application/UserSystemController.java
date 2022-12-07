@@ -1,8 +1,11 @@
 package application;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Optional;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
@@ -16,7 +19,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
@@ -117,11 +123,75 @@ public class UserSystemController  {
 	private NumberAxis yAxis1;
 	@FXML
 	private CategoryAxis xAxis1;
+	@FXML
+	private TableView tblCart;
+	@FXML
+	private Button btnDelete;
+	@FXML
+	private TableColumn tbcItem;
+	@FXML
+	private TableColumn tbcValue;
+
 	
 	
+	
+	
+	ObservableList<Demo> data = FXCollections.observableArrayList();
+	ArrayList<String> strings=new ArrayList<>();
 	@FXML
 	public void initialize() {
-		
+		btnDelete.setOnAction(event -> {
+			int a=tblCart.getSelectionModel().getSelectedIndex();
+			tblCart.getItems().remove(a);
+			strings.remove(a);
+			bookLabel.setVisible(false);
+			laptopLabel.setVisible(false);
+			cookiesLabel.setVisible(false);
+			redpocketLabel.setVisible(false);
+			flowerLabel.setVisible(false);
+			toybearLabel.setVisible(false);
+			for(int i=0;i<strings.size();i++){
+				if(strings.get(i).equals("Book")){
+					bookLabel.setVisible(true);
+				}else if(strings.get(i).equals("laptop")){
+					laptopLabel.setVisible(true);
+				}else if(strings.get(i).equals("cookies")){
+					cookiesLabel.setVisible(true);
+				}else if(strings.get(i).equals("redPocket")){
+					redpocketLabel.setVisible(true);
+				}else if(strings.get(i).equals("flower")){
+					flowerLabel.setVisible(true);
+				}else if(strings.get(i).equals("bear")){
+					toybearLabel.setVisible(true);
+				}
+			}
+			double flowerprice=24.99;
+			double bookprice=5.99;
+			double laptopprice=699.99;
+			double cookiesprice=3.99;
+			double redpocketPrice=10.99;
+			double toyBearprice=45.99;
+			double totalcost=0;
+			for (int i=0;i<1;i++) {
+				if(bookLabel.isVisible()) {
+					totalcost+=bookprice;
+				}if(laptopLabel.isVisible()) {
+					totalcost+=laptopprice;
+				}if(cookiesLabel.isVisible()) {
+					totalcost+=cookiesprice;
+				}if(redpocketLabel.isVisible()) {
+					totalcost+=redpocketPrice;
+				}if(flowerLabel.isVisible()) {
+					totalcost+=flowerprice;
+				}if(toybearLabel.isVisible()) {
+					totalcost+=toyBearprice;
+				}totalprice_label.setText(String.valueOf("Total Cost: "+String.format("%.2f", totalcost)));
+			}
+
+		});
+		tbcItem.setCellValueFactory(new PropertyValueFactory<>("name"));
+		tbcValue.setCellValueFactory(new PropertyValueFactory<>("price"));
+		tblCart.setItems(data);
 		XYChart.Series<String, Number> series1 = new XYChart.Series<>();
 		series1.setName("New Colthes");
 		series1.getData().add(new XYChart.Data<>("Carbon", 21.1));
@@ -153,7 +223,9 @@ public class UserSystemController  {
 		chart2.getData().addAll(series3,series4);}
 	
 
-	
+
+
+
 // in cart page, check out button can confirm checking out;
     public void checkOut() {
     	Alert alert=new Alert(AlertType.INFORMATION);
@@ -240,9 +312,8 @@ public class UserSystemController  {
 				if(option.get().equals(ButtonType.OK)) {
 					try {
 						bookLabel.setVisible(true);
-						
-						
-						
+						data.add(new Demo("Book","$5.99"));
+						strings.add("Book");
 					
 					} 
 					catch(Exception e) {
@@ -259,8 +330,11 @@ public class UserSystemController  {
 				if(option.get().equals(ButtonType.OK)) {
 					try {
 						laptopLabel.setVisible(true);
-						
-						
+						data.add(new Demo("laptop","$669.99"));
+
+						strings.add("laptop");
+
+
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -277,8 +351,8 @@ public class UserSystemController  {
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
 						cookiesLabel.setVisible(true);
-						
-						
+						data.add(new Demo("cookies","$3.99"));
+						strings.add("cookies");
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -294,8 +368,10 @@ public class UserSystemController  {
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
 						redpocketLabel.setVisible(true);
-					
-						
+						data.add(new Demo("redPocket","$10.99"));
+
+						strings.add("redPocket");
+
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -311,8 +387,10 @@ public class UserSystemController  {
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
 						flowerLabel.setVisible(true);
-						
-						
+						data.add(new Demo("flower","$24.99"));
+
+						strings.add("flower");
+
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
@@ -328,8 +406,10 @@ public class UserSystemController  {
 				if(option.get().equals(ButtonType.OK)) {
 					try { 
 						toybearLabel.setVisible(true);
-						
-						
+						data.add(new Demo("bear","$45.99"));
+
+						strings.add("bear");
+
 					} 
 					catch(Exception e) {
 						e.printStackTrace();
