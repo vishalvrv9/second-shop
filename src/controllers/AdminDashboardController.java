@@ -6,19 +6,22 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 import models.Product;
+import models.User;
 import utils.ApprovalQueue;
 
 public class AdminDashboardController implements Initializable{
 	
-	private List<String> adminAuthQueue;
 	private List<Product> sellerQueue;
+	private List<User> userAuthQueue;
 	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ApprovalQueue approvalQueue = ApprovalQueue.getInstance();
-		adminAuthQueue = approvalQueue.getAdminAuthQueue();
-		sellerQueue = approvalQueue.getSellerQueue();		
+		userAuthQueue = approvalQueue.getUserAuthQueue();
+		sellerQueue = approvalQueue.getSellerQueue();
+		System.out.println(userAuthQueue);
+		System.out.println(sellerQueue);
 	}
 
 }
