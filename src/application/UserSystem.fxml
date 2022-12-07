@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,31 +23,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="userpage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserSystemController">
+<StackPane fx:id="userpage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserSystemController">
    <children>
-      <BorderPane prefHeight="462.0" prefWidth="739.0">
+      <BorderPane prefHeight="523.0" prefWidth="1005.0">
          <top>
-            <AnchorPane prefHeight="25.0" prefWidth="725.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="27.0" prefWidth="982.0" BorderPane.alignment="CENTER">
                <children>
                   <!-- <Icon content="ACCOUNT_BOX" layoutX="8.0" layoutY="4.0" /> -->
-                  <Text layoutX="36.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User System Dashboard" />
+                  <Text layoutX="76.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User System Dashboard" />
                </children>
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="436.0" prefWidth="180.0" style="-fx-background-color: #778899;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="476.0" prefWidth="127.0" style="-fx-background-color: #778899;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fill="WHITE" layoutX="5.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
+                  <Text fill="WHITE" layoutX="1.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Welcome Back" wrappingWidth="178.69100952148438">
                      <font>
                         <Font name="Xingkai SC Bold" size="31.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="25.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear User">
+                  <Text fill="WHITE" layoutX="32.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dear User">
                      <font>
                         <Font name="Xingkai SC Bold" size="31.0" />
                      </font>
                   </Text>
-                  <Line endX="19.5" layoutX="123.0" layoutY="127.0" startX="-104.5" stroke="WHITE" />
+                  <Line endX="19.5" layoutX="137.0" layoutY="113.0" startX="-120.5" stroke="WHITE" />
                   <Button fx:id="dashboard_button" layoutX="18.0" layoutY="154.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: #778899;" text="Dashboard">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
@@ -75,18 +76,18 @@
             </AnchorPane>
          </left>
          <center>
-            <BorderPane prefHeight="431.0" prefWidth="548.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="487.0" prefWidth="792.0" BorderPane.alignment="CENTER">
                <center>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="485.0" prefWidth="786.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="3.0" layoutY="4.0" prefHeight="410.0" prefWidth="520.0" style="-fx-background-color: white;">
+                        <AnchorPane prefHeight="488.0" prefWidth="794.0" style="-fx-background-color: white;">
                            <effect>
                               <InnerShadow height="15.1" radius="7.7875" width="18.05" />
                            </effect>
                            <children>
                               <AnchorPane fx:id="dashboard_pane" prefHeight="426.0" prefWidth="544.0">
                                  <children>
-                                    <BorderPane layoutX="3.0" layoutY="2.0" prefHeight="420.0" prefWidth="538.0">
+                                    <BorderPane layoutX="3.0" layoutY="2.0" prefHeight="484.0" prefWidth="791.0">
                                        <top>
                                           <AnchorPane prefHeight="0.0" prefWidth="538.0" style="-fx-border-color: #778899;" BorderPane.alignment="CENTER">
                                              <children>
@@ -104,11 +105,11 @@
                                        <left>
                                           <AnchorPane prefHeight="201.0" prefWidth="251.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="158.0" prefWidth="242.0">
+                                                <AnchorPane layoutX="50.0" layoutY="14.0" prefHeight="177.0" prefWidth="314.0">
                                                    <children>
                                                       <Label fx:id="lblBuy" layoutX="2.0" layoutY="3.0" prefHeight="23.0" prefWidth="222.0" text="How many second hand clothes " />
                                                       <Label fx:id="lblTree" layoutX="53.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Plant" />
-                                                      <Label fx:id="lblBath" layoutY="134.0" prefHeight="18.0" prefWidth="105.0" text="Saving water for  " />
+                                                      <Label fx:id="lblBath" layoutY="134.0" prefHeight="18.0" prefWidth="105.0" text="Save water for  " />
                                                       <Button fx:id="btnView" layoutX="43.0" layoutY="50.0" minWidth="40.0" mnemonicParsing="false" onAction="#clickButton" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #778899; -fx-font-size: 9; -fx-background-radius: 1px20px;" text="which means you" textFill="WHITE">
                                                          <font>
                                                             <Font name="BM JUA OTF" size="10.0" />
@@ -128,21 +129,21 @@
                                                       <Label layoutX="3.0" layoutY="26.0" prefHeight="18.0" prefWidth="162.0" text="have you bought this year?" />
                                                       <Label fx:id="lblTree1" layoutX="179.0" layoutY="89.0" prefHeight="18.0" prefWidth="39.0" text="Trees" />
                                                       <Label fx:id="lblTree11" layoutX="179.0" layoutY="134.0" prefHeight="18.0" prefWidth="39.0" text="Baths" />
+                                                      <Line endX="262.0" endY="-1.0" layoutX="-3.0" layoutY="171.0" startX="10.0" startY="-1.0" stroke="#909090" />
                                                    </children>
                                                 </AnchorPane>
-                                                <Label layoutX="10.0" layoutY="187.0" prefHeight="18.0" prefWidth="237.0" text="The trail of new and used clothes" textFill="LIGHTSLATEGRAY">
+                                                <Label layoutX="22.0" layoutY="196.0" prefHeight="18.0" prefWidth="237.0" text="The trail of new and used clothes" textFill="LIGHTSLATEGRAY">
                                                    <font>
                                                       <Font name="BM HANNA Pro OTF" size="12.0" />
                                                    </font>
                                                 </Label>
-                                                <Line endX="135.0" endY="-8.0" layoutX="108.0" layoutY="180.0" startX="-101.0" startY="-8.0" stroke="#909090" />
                                              </children>
                                           </AnchorPane>
                                        </left>
                                        <center>
                                           <AnchorPane prefHeight="185.0" prefWidth="296.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="178.0" prefWidth="284.0">
+                                                <AnchorPane layoutX="64.0" prefHeight="197.0" prefWidth="363.0">
                                                    <children>
                                                       <StackedBarChart fx:id="chart2" layoutX="-4.0" layoutY="26.0" prefHeight="154.0" prefWidth="288.0" stylesheets="@stackedbarchart.css">
                                                         <xAxis>
@@ -181,39 +182,29 @@
                                           </AnchorPane>
                                        </center>
                                        <bottom>
-                                          <AnchorPane prefHeight="197.0" prefWidth="538.0" BorderPane.alignment="CENTER">
+                                          <AnchorPane prefHeight="232.0" prefWidth="791.0" BorderPane.alignment="CENTER">
                                              <children>
                                                 <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="182.0" prefWidth="305.0">
                                                    <children>
-                                                      <BarChart fx:id="chart1" layoutX="-2.0" prefHeight="180.0" prefWidth="354.0" stylesheets="@barchart.css">
+                                                      <BarChart fx:id="chart1" layoutY="-12.0" prefHeight="180.0" prefWidth="354.0" stylesheets="@barchart.css">
                                                         <xAxis>
                                                           <CategoryAxis prefHeight="26.0" prefWidth="283.0" side="BOTTOM" fx:id="xAxis">
                                                                <tickLabelFont>
                                                                   <Font name="Mukta Regular" size="10.0" />
-                                                               </tickLabelFont></CategoryAxis>
+                                                               </tickLabelFont>
+                                                            </CategoryAxis>
                                                         </xAxis>
                                                         <yAxis>
                                                           <NumberAxis fx:id="yAxis" label="Quantity " prefHeight="133.0" prefWidth="41.0" side="LEFT">
                                                                <tickLabelFont>
                                                                   <Font name="BM HANNA Pro OTF" size="8.0" />
-                                                               </tickLabelFont></NumberAxis>
+                                                               </tickLabelFont>
+                                                            </NumberAxis>
                                                         </yAxis>
                                                       </BarChart>
-                                                      <Label layoutX="64.0" layoutY="166.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #a2c3cd; -fx-background-radius: 5;" />
-                                                      <Label layoutX="187.0" layoutY="166.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #e4eb9d; -fx-background-radius: 5;" />
-                                                      <Label layoutX="90.0" layoutY="168.0" prefHeight="14.0" prefWidth="70.0" text="New Colthes" textFill="LIGHTSLATEGRAY">
-                                                         <font>
-                                                            <Font size="11.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label layoutX="217.0" layoutY="168.0" prefHeight="14.0" prefWidth="106.0" text="Second hand clothes" textFill="LIGHTSLATEGRAY">
-                                                         <font>
-                                                            <Font size="11.0" />
-                                                         </font>
-                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane layoutX="388.0" prefHeight="197.0" prefWidth="142.0" style="-fx-background-color: #778899;">
+                                                <AnchorPane layoutX="515.0" layoutY="3.0" prefHeight="197.0" prefWidth="142.0" style="-fx-background-color: #778899;">
                                                    <children>
                                                       <Label alignment="TOP_CENTER" layoutX="7.0" layoutY="8.0" prefHeight="5.0" prefWidth="128.0" text="Buying second hand items">
                                                          <font>
@@ -240,130 +231,187 @@
                                                             <Font name="BM DoHyeon OTF" size="13.0" />
                                                          </font>
                                                       </Label>
-                                                   </children></AnchorPane>
-                                                <Line endX="2.0" endY="-55.0" layoutX="375.0" layoutY="61.0" startX="2.0" startY="125.0" stroke="#909090" />
+                                                   </children>
+                                                </AnchorPane>
+                                                <Line endX="2.0" endY="-55.0" layoutX="422.0" layoutY="66.0" startX="2.0" startY="125.0" stroke="#909090" />
+                                                <Label layoutX="76.0" layoutY="201.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #a2c3cd; -fx-background-radius: 5;" />
+                                                <Label layoutX="106.0" layoutY="203.0" prefHeight="14.0" prefWidth="70.0" text="New Colthes" textFill="LIGHTSLATEGRAY">
+                                                   <font>
+                                                      <Font size="11.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="205.0" layoutY="200.0" prefHeight="6.0" prefWidth="16.0" style="-fx-background-color: #e4eb9d; -fx-background-radius: 5;" />
+                                                <Label layoutX="233.0" layoutY="203.0" prefHeight="14.0" prefWidth="106.0" text="Second hand clothes" textFill="LIGHTSLATEGRAY">
+                                                   <font>
+                                                      <Font size="11.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </bottom>
                                     </BorderPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="item_pane" layoutX="1.0" layoutY="1.0" prefHeight="426.0" prefWidth="543.0" visible="false">
+                              <AnchorPane fx:id="item_pane" layoutX="1.0" layoutY="1.0" prefHeight="486.0" prefWidth="793.0" visible="false">
                                  <children>
-                                    <AnchorPane layoutX="-4.0" layoutY="-5.0" prefHeight="428.0" prefWidth="547.0">
+                                    <AnchorPane layoutX="-10.0" layoutY="-1.0" prefHeight="495.0" prefWidth="797.0" style="-fx-background-color: #e4e4e4;">
                                        <children>
-                                          <AnchorPane fx:id="cookies_pane" layoutX="402.0" layoutY="35.0" prefHeight="114.0" prefWidth="92.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="cookies_pane" layoutX="542.0" layoutY="24.0" prefHeight="149.0" prefWidth="144.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
-                                                <ImageView fx:id="imageCookies" fitHeight="99.0" fitWidth="86.0" layoutX="2.0" layoutY="4.0">
+                                                <ImageView fx:id="imageCookies" fitHeight="99.0" fitWidth="86.0" layoutX="25.0" layoutY="27.0">
                                                    <image>
                                                       <Image url="@../medias/Cookies.png" />
                                                    </image>
+                                                   <effect>
+                                                      <DropShadow height="53.43" radius="28.425" spread="0.14" width="62.27" />
+                                                   </effect>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="flower_pane" layoutX="217.0" layoutY="215.0" prefHeight="111.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="flower_pane" layoutX="307.0" layoutY="248.0" prefHeight="171.0" prefWidth="149.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
-                                                <ImageView fx:id="imageFlower" fitHeight="98.0" fitWidth="83.0" layoutX="2.0" layoutY="4.0">
+                                                <ImageView fx:id="imageFlower" fitHeight="132.0" fitWidth="116.0" layoutX="21.0" layoutY="11.0">
                                                    <image>
                                                       <Image url="@../medias/Flowers.png" />
                                                    </image>
+                                                   <effect>
+                                                      <DropShadow height="65.22" radius="32.8475" spread="0.09" width="68.17" />
+                                                   </effect>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="redpocket_pane" layoutX="41.0" layoutY="214.0" prefHeight="112.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="redpocket_pane" layoutX="83.0" layoutY="245.0" prefHeight="172.0" prefWidth="151.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
-                                                <ImageView fx:id="imageRedpocket" fitHeight="99.0" fitWidth="71.0" layoutX="12.0" layoutY="7.0">
+                                                <ImageView fx:id="imageRedpocket" fitHeight="99.0" fitWidth="71.0" layoutX="40.0" layoutY="32.0">
                                                    <image>
                                                       <Image url="@../medias/RedPocket.png" />
                                                    </image>
+                                                   <effect>
+                                                      <DropShadow height="79.96" radius="39.48" spread="0.16" width="79.96" />
+                                                   </effect>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="bear_pane" layoutX="401.0" layoutY="214.0" prefHeight="112.0" prefWidth="94.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="bear_pane" layoutX="547.0" layoutY="247.0" prefHeight="175.0" prefWidth="144.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
-                                                <ImageView fx:id="imageBear" fitHeight="98.0" fitWidth="84.0" layoutX="1.0" layoutY="1.0">
+                                                <ImageView fx:id="imageBear" fitHeight="138.0" fitWidth="112.0" layoutX="19.0" layoutY="16.0">
                                                    <image>
                                                       <Image url="@../medias/BearToy.png" />
                                                    </image>
+                                                   <effect>
+                                                      <DropShadow height="56.38" radius="29.9" spread="0.17" width="65.22" />
+                                                   </effect>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="laptop_pane" layoutX="217.0" layoutY="36.0" prefHeight="113.0" prefWidth="95.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="laptop_pane" layoutX="308.0" layoutY="24.0" prefHeight="147.0" prefWidth="148.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
-                                                <ImageView fx:id="imageLaptop" fitHeight="100.0" fitWidth="85.0" layoutX="5.0" layoutY="7.0">
+                                                <ImageView fx:id="imageLaptop" fitHeight="100.0" fitWidth="85.0" layoutX="20.0" layoutY="12.0">
                                                    <image>
                                                       <Image url="@../medias/Laptop.png" />
                                                    </image>
+                                                   <effect>
+                                                      <DropShadow height="68.17" radius="38.7425" spread="0.16" width="88.8" />
+                                                   </effect>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <AnchorPane fx:id="book_pane" layoutX="42.0" layoutY="36.0" prefHeight="114.0" prefWidth="93.0" style="-fx-background-color: #e4e4e4;">
+                                          <AnchorPane fx:id="book_pane" layoutX="81.0" layoutY="25.0" prefHeight="146.0" prefWidth="152.0" style="-fx-background-color: #e4e4e4;">
                                              <children>
-                                                <ImageView fx:id="imageBook" fitHeight="114.0" fitWidth="92.0" layoutX="1.0">
+                                                <ImageView fx:id="imageBook" fitHeight="114.0" fitWidth="92.0" layoutX="30.0" layoutY="14.0">
                                                    <image>
                                                       <Image url="@../medias/Book.png" />
                                                    </image>
+                                                   <effect>
+                                                      <DropShadow height="44.58" radius="24.740000000000002" width="56.38" />
+                                                   </effect>
                                                 </ImageView>
                                              </children></AnchorPane>
-                                          <Button fx:id="book_button" layoutX="62.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="laptop_button" layoutX="238.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="cookies_button" layoutX="421.0" layoutY="150.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="redPocket_button" layoutX="62.0" layoutY="326.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="flower_button" layoutX="238.0" layoutY="326.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
-                                          <Button fx:id="bear_button" layoutX="421.0" layoutY="326.0" mnemonicParsing="false" onAction="#imageSelect" style="-fx-background-color: #778899;" text="pick" />
+                                          <Button fx:id="book_button" layoutX="80.0" layoutY="171.0" mnemonicParsing="false" onAction="#imageSelect" prefHeight="37.0" prefWidth="155.0" style="-fx-background-color: #778899;" text="pick">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <Button fx:id="laptop_button" layoutX="306.0" layoutY="171.0" mnemonicParsing="false" onAction="#imageSelect" prefHeight="36.0" prefWidth="149.0" style="-fx-background-color: #778899;" text="pick">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <Button fx:id="cookies_button" layoutX="544.0" layoutY="170.0" mnemonicParsing="false" onAction="#imageSelect" prefHeight="37.0" prefWidth="144.0" style="-fx-background-color: #778899;" text="pick">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <Button fx:id="redPocket_button" layoutX="82.0" layoutY="416.0" mnemonicParsing="false" onAction="#imageSelect" prefHeight="34.0" prefWidth="153.0" style="-fx-background-color: #778899;" text="pick">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <Button fx:id="flower_button" layoutX="308.0" layoutY="419.0" mnemonicParsing="false" onAction="#imageSelect" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #778899;" text="pick">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <Button fx:id="bear_button" layoutX="546.0" layoutY="420.0" mnemonicParsing="false" onAction="#imageSelect" prefHeight="34.0" prefWidth="148.0" style="-fx-background-color: #778899;" text="pick">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="chart_pane" layoutX="3.0" prefHeight="428.0" prefWidth="541.0" visible="false">
+                              <AnchorPane fx:id="chart_pane" layoutX="-1.0" layoutY="-73.0" prefHeight="567.0" prefWidth="793.0" visible="false">
                                  <children>
-                                    <ImageView fitHeight="375.0" fitWidth="542.0" layoutY="40.0" opacity="0.46">
+                                    <ImageView fitHeight="498.0" fitWidth="796.0" layoutX="1.0" layoutY="71.0" opacity="0.46">
                                        <image>
                                           <Image url="@../../bin/medias/catbackground_cart.jpeg" />
                                        </image>
                                     </ImageView>
-                                    <Button fx:id="checkout_button" layoutX="442.0" layoutY="373.0" mnemonicParsing="false" onAction="#checkOut" style="-fx-background-color: #778899;" text="Check Out" />
-                                    <Label fx:id="totalprice_label" layoutX="14.0" layoutY="337.0" prefHeight="54.0" prefWidth="279.0" text="Total Price:">
+                                    <Label fx:id="totalprice_label" layoutX="14.0" layoutY="372.0" prefHeight="54.0" prefWidth="279.0" text="Total Price:">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="36.0" />
                                        </font></Label>
-                                    <Label fx:id="bookLabel" layoutX="27.0" layoutY="71.0" prefHeight="20.0" prefWidth="203.0" visible="false">
+                                    <Label fx:id="bookLabel" layoutX="15.0" layoutY="142.0" prefHeight="24.0" prefWidth="233.0" text="**********" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="laptopLabel" layoutX="28.0" layoutY="100.0" prefHeight="18.0" prefWidth="212.0" visible="false">
+                                    <Label fx:id="laptopLabel" layoutX="17.0" layoutY="174.0" prefHeight="26.0" prefWidth="227.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="cookiesLabel" layoutX="28.0" layoutY="128.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                    <Label fx:id="cookiesLabel" layoutX="16.0" layoutY="203.0" prefHeight="23.0" prefWidth="215.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="redpocketLabel" layoutX="28.0" layoutY="157.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                    <Label fx:id="redpocketLabel" layoutX="15.0" layoutY="232.0" prefHeight="27.0" prefWidth="224.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="flowerLabel" layoutX="28.0" layoutY="187.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                    <Label fx:id="flowerLabel" layoutX="14.0" layoutY="256.0" prefHeight="26.0" prefWidth="220.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="toybearLabel" layoutX="28.0" layoutY="219.0" prefHeight="15.0" prefWidth="220.0" visible="false">
+                                    <Label fx:id="toybearLabel" layoutX="14.0" layoutY="337.0" prefHeight="28.0" prefWidth="220.0" visible="false">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="cookiesLabel1" layoutX="14.0" layoutY="5.0" prefHeight="15.0" prefWidth="220.0" text="User Cart">
+                                    <Button fx:id="checkout_button" layoutX="658.0" layoutY="518.0" mnemonicParsing="false" onAction="#checkOut" prefHeight="22.0" prefWidth="115.0" style="-fx-background-color: #778899;" text="Check Out">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Button>
+                                    <Label fx:id="cookiesLabel1" layoutX="14.0" layoutY="80.0" prefHeight="15.0" prefWidth="220.0" text="User Receipt">
                                        <font>
                                           <Font name="Xingkai SC Bold" size="48.0" />
                                        </font>
                                     </Label>
-                                    <TableView fx:id="tblCart" layoutX="269.0" layoutY="47.0" prefHeight="222.0" prefWidth="249.0" style="-fx-background-color: #bec395; -fx-border-color: #919e47; -fx-background-radius: 20; -fx-border-radius: 20;">
+                                    <TableView fx:id="tblCart" layoutX="284.0" layoutY="73.0" prefHeight="295.0" prefWidth="504.0" style="-fx-background-color: #bec395; -fx-border-color: #919e47; -fx-background-radius: 20; -fx-border-radius: 20;">
                                       <columns>
-                                        <TableColumn fx:id="tbcItem" prefWidth="117.0" style="-fx-background-color: #bec395;" text="Item" />
-                                        <TableColumn fx:id="tbcValue" prefWidth="130.0" style="-fx-background-color: #bec395;" text="value" />
+                                        <TableColumn fx:id="tbcItem" prefWidth="259.0" style="-fx-background-color: #bec395;" text="Item" />
+                                        <TableColumn fx:id="tbcValue" prefWidth="243.0" style="-fx-background-color: #bec395;" text="value" />
                                       </columns>
                                     </TableView>
-                                    <Button fx:id="btnDelete" layoutX="367.0" layoutY="276.0" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #5c6775;" text="Delete" textFill="WHITE" />
+                                    <Button fx:id="btnDelete" layoutX="304.0" layoutY="366.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="469.0" style="-fx-background-radius: 5; -fx-background-color: #778899;" text="Delete" textFill="WHITE">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect></Button>
+                                    <Line endX="54.5" endY="313.0" layoutX="218.0" layoutY="217.0" startX="54.5" startY="-122.0" stroke="WHITE" strokeWidth="2.0" />
                                  </children>
                               </AnchorPane>
                            </children>
