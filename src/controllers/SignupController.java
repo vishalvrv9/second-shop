@@ -71,7 +71,6 @@ public class SignupController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
 		if (con == null) {
 			lblErrors.setTextFill(Color.TOMATO);
 			lblErrors.setText("Server Error : Check");

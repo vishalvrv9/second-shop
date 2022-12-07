@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import models.User;
 import utils.ConnectionUtil;
 import utils.PaneRouter;
 
@@ -140,6 +141,7 @@ public class LoginController implements Initializable {
 					setLblError(Color.TOMATO, "Enter Correct Email/Password");
 					status = "Error";
 				} else {
+					System.out.println(resultSet.toString());
 					setLblError(Color.GREEN, "Login Successful..Redirecting..");
 				}
 			} catch (SQLException ex) {

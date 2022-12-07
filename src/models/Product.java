@@ -1,7 +1,7 @@
 package models;
 
 public class Product {
-	
+
 	private int id;
 	private String name;
 	private String image;
@@ -9,6 +9,10 @@ public class Product {
 	private String postedBy;
 	private String size;
 	private double price;
+
+	public Product() {
+	}
+
 
 	public int getId() {
 		return id;
@@ -65,5 +69,12 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", image=" + image + ", type=" + type + ", postedBy=" + postedBy
+				+ ", size=" + size + ", price=" + price + "]";
+	}
+
 
 }
