@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,27 +11,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
+import utils.ApprovalQueue;
+import models.User;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import models.Product;
-import models.User;
-import session.UserSession;
-import utils.ApprovalQueue;
 import utils.ConnectionUtil;
+import utils.PaneRouter;
+import utils.RenderLabelUtil;
 
 public class AdminDashboardController implements Initializable {
 
+	/// --
 	Connection con = null;
 	PreparedStatement preparedStatement = null;
 	ResultSet resultSet = null;
@@ -38,64 +45,56 @@ public class AdminDashboardController implements Initializable {
 	private List<User> userAuthQueue;
 
 	@FXML
-	private Button btnOverview;
+	private ComboBox<String> userIntent;
 
 	@FXML
-	private Label lblError;
+	private Label lblStatus;
 
 	@FXML
-	private Button btnApproveUsers;
+	Label approvalStatus;
 
 	@FXML
-	private Button btnApproveSellers;
-
-	@FXML
-	private Button btnLogout;
-
-	@FXML
-	private Pane overviewPane;
-
-	@FXML
-	private Pane approveUsersPane;
-
-	@FXML
-	private Pane approveSellersPane;
+	private Button btnUserIntent;
 
 	@FXML
 	private VBox unapprovedSellerList;
 
+	@FXML
+	private VBox unapprovedUserList;
+
 	public AdminDashboardController() {
 		con = ConnectionUtil.connectToDB();
+
+	}
+
+	@FXML
+	public void handleUserIntent(MouseEvent event) {
+		System.out.println(event.getSource());
+		System.out.println(userIntent.getValue());
+//		if (("Overview").equals(userIntent.getValue())) {
+//			setLblError(Color.GREEN, "Redirecting to inventory...");
+//			PaneRouter.route(this, event, "/fxml/AdminOverview.fxml");
+//		} else 
+		if (("Approve Sellers").equals(userIntent.getValue())) {
+			setLblError(Color.GREEN, "Redirecting to seller page...");
+			PaneRouter.route(this, event, "/fxml/AdminApproveSellers.fxml");
+		} else if (("Approve Users").equals(userIntent.getValue())) {
+			setLblError(Color.GREEN, "Redirecting to users page...");
+			PaneRouter.route(this, event, "/fxml/AdminApproveUsers.fxml");
+		}
+
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		userIntent.getItems().addAll("Overview", "Approve Sellers", "Approve Users");
 		ApprovalQueue approvalQueue = ApprovalQueue.getInstance();
 		userAuthQueue = approvalQueue.getUserAuthQueue();
 		sellerQueue = approvalQueue.getSellerQueue();
 		System.out.println(userAuthQueue);
 		System.out.println(sellerQueue);
-	}
-
-	public void handleClicks(ActionEvent actionEvent) {
-		if (actionEvent.getSource() == btnOverview) {
-			overviewPane.setStyle("-fx-background-color : #1620A1");
-
-			overviewPane.toFront();
-		}
-		if (actionEvent.getSource() == btnApproveUsers) {
-			approveUsersPane.setStyle("-fx-background-color : #53639F");
-			approveUsersPane.toFront();
-		}
-		if (actionEvent.getSource() == btnApproveSellers) {
-			approveSellersPane.setStyle("-fx-background-color : #02030A");
-			populateSellerQueue(unapprovedSellerList);
-			approveSellersPane.toFront();
-		}
-		if (actionEvent.getSource() == btnLogout) {
-			System.out.println("Logout admin");
-
-		}
+		populateSellerQueue(unapprovedSellerList);
+		populateUserQueue(unapprovedUserList);
 	}
 
 	private void populateSellerQueue(VBox itemList) {
@@ -109,7 +108,8 @@ public class AdminDashboardController implements Initializable {
 				nodes[i].setPadding(new Insets(20, 20, 20, 20));
 
 				// inject image to HBox
-				Image productImage = new Image(currentProduct.getImage());
+				FileInputStream fis = new FileInputStream(currentProduct.getImage());
+				Image productImage = new Image(fis);
 				ImageView imageContainer = new ImageView(productImage);
 				imageContainer.setFitWidth(200);
 				imageContainer.setFitHeight(200);
@@ -145,7 +145,7 @@ public class AdminDashboardController implements Initializable {
 					System.out.println("Approved sell");
 					String status = markProductAsApprovedOnDB(currentProduct);
 					ApprovalQueue.getInstance().getSellerQueue().remove(currentProduct);
-					if("Success".equals(status)) {
+					if ("Success".equals(status)) {
 						approveSell.setDisable(true);
 					}
 				});
@@ -158,10 +158,84 @@ public class AdminDashboardController implements Initializable {
 		}
 	}
 
-	private void setLblError(Color color, String text) {
-		lblError.setTextFill(color);
-		lblError.setText(text);
-		System.out.println(text);
+	private void populateUserQueue(VBox itemList) {
+		HBox[] nodes = new HBox[userAuthQueue.size()];
+		for (int i = 0; i < nodes.length; i++) {
+			try {
+				User currentUser = userAuthQueue.get(i);
+				// setup HBox to render products
+				nodes[i] = new HBox();
+				nodes[i].setSpacing(50);
+				nodes[i].setPadding(new Insets(20, 20, 20, 20));
+
+				// inject name to HBox
+				Label firstname = new Label();
+				firstname.setText(currentUser.getFirstname());
+				firstname.setMinWidth(Region.USE_PREF_SIZE);
+//				productName.setWrapText(true);
+				nodes[i].getChildren().add(firstname);
+				// inject price to Hbox
+				Label lastname = new Label();
+				lastname.setText(currentUser.getLastname());
+				lastname.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(lastname);
+				// inject seller to HBox
+				Label email = new Label();
+				email.setText(currentUser.getEmail());
+				email.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(email);
+				// inject size to HBox
+				Label username = new Label();
+				username.setText(currentUser.getUsername());
+				username.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(username);
+
+				// inject button to Hbox
+				Button approveUser = new Button();
+				approveUser.setText("Approve");
+				approveUser.setId(String.valueOf(currentUser.getUsername()));
+				approveUser.setOnAction(event -> {
+					System.out.println("Approved user");
+					String status = markAdminAsAdminOnDB(currentUser);
+					ApprovalQueue.getInstance().getUserAuthQueue().remove(currentUser);
+					if ("Success".equals(status)) {
+						approveUser.setDisable(true);
+					}
+				});
+				approveUser.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(approveUser);
+				itemList.getChildren().add(nodes[i]);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private String markAdminAsAdminOnDB(User user) {
+		String sqlQuery = "update admins set isApproved = 1 where username= ?";
+
+		String status = "IN_PROGRESS";
+		try {
+			preparedStatement = con.prepareStatement(sqlQuery);
+			preparedStatement.setString(1, user.getUsername());
+			int isRegistered = preparedStatement.executeUpdate();
+			System.out.println("ResultSet: " + isRegistered);
+
+			if (isRegistered > 0) {
+				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.GREEN, status);
+				status = "Success";
+
+			} else {
+				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.TOMATO, status);
+				status = "Failure";
+			}
+		} catch (SQLException ex) {
+			System.err.println(ex.getMessage());
+			ex.printStackTrace();
+
+		}
+		return status;
+
 	}
 
 	private String markProductAsApprovedOnDB(Product product) {
@@ -175,11 +249,12 @@ public class AdminDashboardController implements Initializable {
 			System.out.println("ResultSet: " + isRegistered);
 
 			if (isRegistered > 0) {
-				setLblError(Color.GREEN, "Product approved..Redirecting..");
+				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.GREEN, "Product approved..Redirecting..");
 				status = "Success";
 
 			} else {
-				setLblError(Color.TOMATO, "There was a problem while approving. Please try after sometime.");
+				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.TOMATO,
+						"There was a problem while approving. Please try after sometime.");
 				status = "Failure";
 			}
 		} catch (SQLException ex) {
@@ -190,4 +265,11 @@ public class AdminDashboardController implements Initializable {
 		return status;
 
 	}
+
+	private void setLblError(Color color, String text) {
+		lblStatus.setTextFill(color);
+		lblStatus.setText(text);
+		System.out.println(text);
+	}
+
 }

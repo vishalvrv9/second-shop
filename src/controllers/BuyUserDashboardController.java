@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -153,7 +154,8 @@ public class BuyUserDashboardController implements Initializable {
 				nodes[i].setPadding(new Insets(20, 20, 20, 20));
 
 				// inject image to HBox
-				Image productImage = new Image(currentProduct.getImage());
+				FileInputStream fis = new FileInputStream(currentProduct.getImage());
+				Image productImage = new Image(fis);
 				ImageView imageContainer = new ImageView(productImage);
 				imageContainer.setFitWidth(200);
 				imageContainer.setFitHeight(200);

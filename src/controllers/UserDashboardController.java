@@ -10,13 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -42,6 +47,15 @@ public class UserDashboardController implements Initializable {
 
 	@FXML
 	private GridPane productCatalog;
+	
+//	---- from user system ---- 
+	@FXML 
+	private TextField txtBuy;
+	
+	@FXML private Button btnView;
+	
+	@FXML private Label lblTreeNum;
+	@FXML private Label lblBathNum;
 
 	public UserDashboardController() {
 		con = ConnectionUtil.connectToDB();
@@ -65,12 +79,24 @@ public class UserDashboardController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		userIntent.getItems().addAll("Buy", "Sell");
+	
 	}
 
 	private void setLblError(Color color, String text) {
 		lblStatus.setTextFill(color);
 		lblStatus.setText(text);
 		System.out.println(text);
+	}
+	
+	public void clickButton(ActionEvent event) {
+
+		if (event.getSource() == btnView) {
+			System.out.println("view");
+			String test = txtBuy.getText();
+			int i = Integer.parseInt(test);
+			lblTreeNum.setText(String.format("%.2f", i * 0.2));
+			lblBathNum.setText(String.format("%.2f", i * 3.8));
+		}
 	}
 
 }
