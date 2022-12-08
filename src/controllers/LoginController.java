@@ -41,8 +41,6 @@ public class LoginController implements Initializable {
 	@FXML
 	private Button btnSignupRouter;
 
-
-
 	@FXML
 	private Button btnAdmin;
 
@@ -59,28 +57,17 @@ public class LoginController implements Initializable {
 			// login here
 			if (logIn(false).equals("Success")) {
 				routingDashboard = "/fxml/UserDashboard.fxml";
+				PaneRouter.route(this, event, routingDashboard);
 
 			}
 		} else if (event.getSource() == btnAdmin) {
 			System.out.println("Inside btnAdmin");
 			if (logIn(true).equals("Success")) {
 				routingDashboard = "/fxml/AdminDashBoard.fxml";
+				PaneRouter.route(this, event, routingDashboard);
 			}
-		}
-		try {
-
-//			Node node = (Node) event.getSource();
-//			Stage stage = (Stage) node.getScene().getWindow();
-////            stage.setMaximized(true);
-//			stage.close();
-//			Scene scene = new Scene(FXMLLoader.load(getClass().getResource(routingDashboard)));
-//			stage.setScene(scene);
-//			stage.show();
-			PaneRouter.route(this, event, routingDashboard);
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			System.err.println(ex.getMessage());
+		}else {
+			setLblError(Color.TOMATO, "Invalid Credentials");
 		}
 	}
 
