@@ -31,18 +31,23 @@
                 </ComboBox>
             </children>
         </Pane>
-        <Label fx:id="lblStatus" layoutX="305.0" layoutY="14.0" prefHeight="52.0" prefWidth="467.0" text="This is Checkout Page">
+        <Label fx:id="lblStatus" layoutX="305.0" layoutY="14.0" prefHeight="52.0" prefWidth="378.0" text="Your Shopping Cart">
          <font>
             <Font size="24.0" />
          </font>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding></Label>
-      <Button fx:id="btnCheckout" layoutX="874.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleCheckout" prefHeight="32.0" prefWidth="204.0" stylesheets="@../styling/fullpackstyling.css" text="Checkout" />
-      <ScrollPane fx:id="cartScrollPane" layoutX="301.0" layoutY="89.0" prefHeight="461.0" prefWidth="791.0">
+      <Button fx:id="btnCheckout" layoutX="595.0" layoutY="507.0" mnemonicParsing="false" onAction="#handleCheckout" prefHeight="32.0" prefWidth="204.0" stylesheets="@../styling/fullpackstyling.css" text="Checkout" />
+      <ScrollPane fx:id="cartScrollPane" layoutX="301.0" layoutY="89.0" prefHeight="405.0" prefWidth="791.0">
          <content>
-            <VBox fx:id="itemsInCart" prefHeight="459.0" prefWidth="788.0" />
+            <VBox fx:id="itemsInCart" prefHeight="403.0" prefWidth="788.0" />
          </content>
       </ScrollPane>
+      <Label fx:id="lblTotalPrice" alignment="CENTER" contentDisplay="CENTER" layoutX="709.0" layoutY="14.0" prefHeight="52.0" prefWidth="378.0" textAlignment="CENTER" textFill="#0c39ff">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
