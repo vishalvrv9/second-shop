@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -27,7 +33,8 @@ import utils.ConnectionUtil;
 import utils.PaneRouter;
 
 public class SellUserDashboardController implements Initializable {
-	
+
+	private static final String IMAGE_DESTINATION_PATH = "/Users/vishalraj/productImageDump/";
 	private List<String> allowedFormats;
 	private String localImagePath;
 	Connection con = null;
@@ -52,7 +59,7 @@ public class SellUserDashboardController implements Initializable {
 	private ComboBox<String> productSizeInput;
 	@FXML
 	private TextField productPriceInput;
-	
+
 	public SellUserDashboardController() {
 		con = ConnectionUtil.connectToDB();
 	}
@@ -67,11 +74,13 @@ public class SellUserDashboardController implements Initializable {
 		allowedFormats.add("*.jpeg");
 		allowedFormats.add("*.png");
 	}
-	
+
 	@FXML
 	public void handleDonate(ActionEvent event) {
+		String destinationImagePath = IMAGE_DESTINATION_PATH + productTypeInput.getValue() + System.currentTimeMillis()
+				+ ".png";
 		String productName = productNameInput.getText();
-		String productImage = productImageInput.getText();
+		String productImage = destinationImagePath;
 		String productType = productTypeInput.getValue();
 		String productSeller = productSellerInput.getText();
 		String productSize = productSizeInput.getValue();
@@ -83,38 +92,43 @@ public class SellUserDashboardController implements Initializable {
 		prospectiveProduct.setPostedBy(productSeller);
 		prospectiveProduct.setSize(productSize);
 		prospectiveProduct.setPrice(productPrice);
-		
-		//write image file to directory
+
+		// load image file from directory
+		try {
+			FileInputStream fis = new FileInputStream(localImagePath);
+			Image imageToBeSaved = new Image(fis);
+			// create file at destination
+			File productImageFile = new File(destinationImagePath);
+			ImageIO.write(SwingFXUtils.fromFXImage(imageToBeSaved, null), "png", productImageFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		// add to admin seller queue
 		ApprovalQueue adminQueue = ApprovalQueue.getInstance();
 		adminQueue.getSellerQueue().add(prospectiveProduct);
-		
-		//persist to db
-		persistProductToDatabase(prospectiveProduct);
-		
+
+		// persist to db
+		String status = persistProductToDatabase(prospectiveProduct);
+		if ("Success".equals(status)) {
+			PaneRouter.route(this, event, "/fxml/SellUnderReview.fxml");
+		}
+
 	}
-	
+
 	@FXML
 	public void handleImageUpload(ActionEvent event) {
 		System.out.println(event.getSource());
-		System.out.println(productTypeInput.getValue());
-		System.out.println(productSizeInput.getValue());
-//		if (("Buy").equals(userIntent.getValue())) {
-//			PaneRouter.route(this, event, "/fxml/BuyUserDashboard.fxml");
-//		} else if (("Give Back").equals(userIntent.getValue())) {
-//			PaneRouter.route(this, event, "/fxml/SellUserDashboard.fxml");
-//		}
 		FileChooser fc = new FileChooser();
 		fc.getExtensionFilters().add(new ExtensionFilter("Images", allowedFormats));
 		File file = fc.showOpenDialog(null);
-		
-		if(file != null) {
-			setLblError(Color.GREEN, "Selected File: "+file.getAbsolutePath()+ " (size: "+ file.getAbsolutePath()+")");
+
+		if (file != null) {
+			setLblError(Color.GREEN, file.getAbsolutePath());
 			localImagePath = file.getAbsolutePath();
 		}
 
 	}
-	
+
 	@FXML
 	public void handleUserIntent(MouseEvent event) {
 		System.out.println(event.getSource());
@@ -126,13 +140,13 @@ public class SellUserDashboardController implements Initializable {
 		}
 
 	}
-	
+
 	private void setLblError(Color color, String text) {
 		labelProductFileInput.setTextFill(color);
 		labelProductFileInput.setText(text);
 		System.out.println(text);
 	}
-	
+
 	private String persistProductToDatabase(Product p) {
 		String status = "IN_PROGRESS";
 		String sqlQuery = "INSERT INTO products (name, image, type, postedBy, size, price) VALUES "
@@ -147,12 +161,14 @@ public class SellUserDashboardController implements Initializable {
 			preparedStatement.setString(6, String.valueOf(p.getPrice()));
 			int isRegistered = preparedStatement.executeUpdate();
 			System.out.println("ResultSet: " + isRegistered);
+
 			if (isRegistered > 0) {
 				setLblError(Color.GREEN, "Product persisted..Redirecting..");
-				
+				status = "Success";
 
 			} else {
 				setLblError(Color.TOMATO, "There was a problem while registering User. Please try after sometime.");
+				status = "Failure";
 			}
 		} catch (SQLException ex) {
 			System.err.println(ex.getMessage());
@@ -160,7 +176,7 @@ public class SellUserDashboardController implements Initializable {
 
 		}
 		return status;
-		
+
 	}
 
 }

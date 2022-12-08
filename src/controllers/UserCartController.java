@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -21,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import models.Product;
@@ -53,16 +55,23 @@ public class UserCartController implements Initializable{
 	@FXML
 	private VBox itemsInCart;
 	
+	@FXML
+	private Label lblTotalPrice;
+	
+	@FXML
+	private Button btnGoToDashboard;
 
 
 	public UserCartController() {
-
 		con = ConnectionUtil.connectToDB();
 		productsInCart = new ArrayList<>();
-//		productsInCart = UserSession.getInstance().getUserCart();
-		System.out.println("Items in cart: "+ productsInCart.toString());
-		populateScrollPane(itemsInCart);
 		
+	}
+	
+	@FXML
+	public void handleClick(ActionEvent event) {
+		System.out.println("inside usercart handleclick");
+		PaneRouter.route(this, event, "/fxml/UserDashboard.fxml");
 	}
 	
 	@FXML
@@ -78,9 +87,10 @@ public class UserCartController implements Initializable{
 	}
 	
 	@FXML
-	public void handleCheckout(MouseEvent event) {
+	public void handleCheckout(ActionEvent event) {
 
 		System.out.println("This is handleCheckout");
+		PaneRouter.route(this, event, "/fxml/SuccessfulCheckout.fxml");
 
 	}
 	
@@ -88,6 +98,9 @@ public class UserCartController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		userIntent.getItems().addAll("Buy", "Sell");
 		productsInCart = UserSession.getInstance().getUserCart();
+		System.out.println("Items in cart: "+ productsInCart.toString());
+		populateScrollPane(itemsInCart);
+		calculateAndDisplayCartValue();
 		
 	}
 	
@@ -97,6 +110,11 @@ public class UserCartController implements Initializable{
 		System.out.println(text);
 	}
 	
+	private void setLblTotalPrice(Color color, String text) {
+		lblTotalPrice.setTextFill(color);
+		lblTotalPrice.setText(text);
+		System.out.println(text);
+	}
 	private void populateScrollPane(VBox itemList) {
 		HBox[] nodes = new HBox[productsInCart.size()];
 		for (int i = 0; i < nodes.length; i++) {
@@ -120,34 +138,46 @@ public class UserCartController implements Initializable{
 				Label productName = new Label();
 				productName.setText(currentProduct.getName());
 				productName.setWrapText(true);
+				productName.setMinWidth(Region.USE_PREF_SIZE);
 				nodes[i].getChildren().add(productName);
 				// inject price to Hbox
 				Label productPrice = new Label();
 				productPrice.setText("$" + currentProduct.getPrice());
+				productPrice.setMinWidth(Region.USE_PREF_SIZE);
 				nodes[i].getChildren().add(productPrice);
 				// inject seller to HBox
 				Label postedBy = new Label();
 				postedBy.setText(currentProduct.getPostedBy());
+				postedBy.setMinWidth(Region.USE_PREF_SIZE);
 				nodes[i].getChildren().add(postedBy);
 				// inject size to HBox
 				Label productSize = new Label();
 				productSize.setText(currentProduct.getSize());
+				productSize.setMinWidth(Region.USE_PREF_SIZE);
 				nodes[i].getChildren().add(productSize);
 
-				// inject button to Hbox
-//				Button addToCart = new Button();
-//				addToCart.setText("Add To Cart");
-//				addToCart.setId(String.valueOf(currentProduct.getId()));
-//				addToCart.setOnAction(event -> {
-//					System.out.println("Add to cart clicked");
-//					UserSession.getInstance().getUserCart().add(currentProduct);
+//				 inject button to Hbox
+//				Button removeFromCart = new Button();
+//				removeFromCart.setText("Remove");
+//				removeFromCart.setId(String.valueOf(currentProduct.getId()));
+//				removeFromCart.setOnAction(event -> {
+//					System.out.println("Remove clicked");
+//					UserSession.getInstance().getUserCart().remove(currentProduct);
 //				});
-//				nodes[i].getChildren().add(addToCart);
+//				nodes[i].getChildren().add(removeFromCart);
 				itemList.getChildren().add(nodes[i]);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private void calculateAndDisplayCartValue() {
+		Double totalPrice=0.0;
+		for(Product p : productsInCart) {
+			totalPrice += p.getPrice();
+		}
+		setLblTotalPrice(Color.BLUE, "Total Cart Value: $"+totalPrice);
 	}
 
 }

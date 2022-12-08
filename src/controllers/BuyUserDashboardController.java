@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +28,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import models.Product;
@@ -37,12 +42,18 @@ public class BuyUserDashboardController implements Initializable {
 	PreparedStatement preparedStatement = null;
 	ResultSet resultSet = null;
 	List<Product> products;
+	ObservableList<Product> productsInCart;
 
 	@FXML
 	private ComboBox<String> userIntent;
 
 	@FXML
 	private Label lblStatus;
+
+	@FXML
+	private Button btnRedirectToCart;
+	@FXML
+	private Button btnCheckout;
 
 	@FXML
 	private Button btnUserIntent;
@@ -56,6 +67,12 @@ public class BuyUserDashboardController implements Initializable {
 		con = ConnectionUtil.connectToDB();
 		products = new ArrayList<>();
 
+	}
+
+	@FXML
+	public void handleRedirectToCart(ActionEvent event) {
+		System.out.println("This is handleGoToCart");
+		PaneRouter.route(this, event, "/fxml/UserCart.fxml");
 	}
 
 	@FXML
@@ -73,59 +90,17 @@ public class BuyUserDashboardController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		userIntent.getItems().addAll("Buy", "Sell");
-		products = loadProductCatalog();
+		if(products.isEmpty()) {			
+			products = loadProductCatalog();
+		}
 		for (Product prod : products) {
 			System.out.println(prod.toString());
 		}
-		HBox[] nodes = new HBox[products.size()];
-		for (int i = 0; i < nodes.length; i++) {
-			try {
-				Product currentProduct = products.get(i);
-				//setup HBox to render products
-				nodes[i] = new HBox();
-				nodes[i].setSpacing(50);
-				nodes[i].setPadding(new Insets(20, 20, 20, 20));
-
-				//inject image to HBox
-				Image productImage = new Image(currentProduct.getImage());
-				ImageView imageContainer = new ImageView(productImage);
-				imageContainer.setFitWidth(200);
-				imageContainer.setFitHeight(200);
-				imageContainer.setPreserveRatio(true);
-				nodes[i].getChildren().add(imageContainer);
-				//inject name to HBox
-				Label productName = new Label();
-				productName.setText(currentProduct.getName());
-				productName.setWrapText(true);
-				nodes[i].getChildren().add(productName);
-				//inject price to Hbox
-				Label productPrice = new Label();
-				productPrice.setText("$"+currentProduct.getPrice());
-				nodes[i].getChildren().add(productPrice);
-				//inject seller to HBox
-				Label postedBy = new Label();
-				postedBy.setText(currentProduct.getPostedBy());
-				nodes[i].getChildren().add(postedBy);
-				//inject size to HBox
-				Label productSize = new Label();
-				productSize.setText(currentProduct.getSize());
-				nodes[i].getChildren().add(productSize);
-
-				//inject button to Hbox
-				Button addToCart = new Button();
-				addToCart.setText("Add To Cart");
-				addToCart.setId(String.valueOf(currentProduct.getId()));
-				addToCart.getStyleClass().add("/styling/fullpackstyling.css");
-				addToCart.setOnAction(event -> {
-					System.out.println("Add to cart clicked");
-					UserSession.getInstance().getUserCart().add(currentProduct);
-				});
-				nodes[i].getChildren().add(addToCart);
-				productCatalog.getChildren().add(nodes[i]);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		populateScrollPane(productCatalog);
+//		populateScrollPane(cartItems);
+//		productsInCart.addListener((ListChangeListener) e -> {
+//			System.out.println("List Changed"); 
+//		});
 
 	}
 
@@ -136,7 +111,7 @@ public class BuyUserDashboardController implements Initializable {
 	}
 
 	private List<Product> loadProductCatalog() {
-		String sqlQuery = "select * from products";
+		String sqlQuery = "select * from products where isApproved=1";
 		try {
 			preparedStatement = con.prepareStatement(sqlQuery);
 
@@ -159,6 +134,7 @@ public class BuyUserDashboardController implements Initializable {
 					products.add(prod);
 				}
 			}
+			setLblError(Color.BLACK, "This is our Product Inventory!");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			System.err.println(ex.getMessage());
@@ -166,5 +142,59 @@ public class BuyUserDashboardController implements Initializable {
 
 		return products;
 	}
+	private void populateScrollPane(VBox itemList) {
+		HBox[] nodes = new HBox[products.size()];
+		for (int i = 0; i < nodes.length; i++) {
+			try {
+				Product currentProduct = products.get(i);
+				// setup HBox to render products
+				nodes[i] = new HBox();
+				nodes[i].setSpacing(50);
+				nodes[i].setPadding(new Insets(20, 20, 20, 20));
 
+				// inject image to HBox
+				Image productImage = new Image(currentProduct.getImage());
+				ImageView imageContainer = new ImageView(productImage);
+				imageContainer.setFitWidth(200);
+				imageContainer.setFitHeight(200);
+				imageContainer.setPreserveRatio(true);
+				nodes[i].getChildren().add(imageContainer);
+				// inject name to HBox
+				Label productName = new Label();
+				productName.setText(currentProduct.getName());
+				productName.setMinWidth(Region.USE_PREF_SIZE);
+//				productName.setWrapText(true);
+				nodes[i].getChildren().add(productName);
+				// inject price to Hbox
+				Label productPrice = new Label();
+				productPrice.setText("$" + currentProduct.getPrice());
+				productPrice.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(productPrice);
+				// inject seller to HBox
+				Label postedBy = new Label();
+				postedBy.setText(currentProduct.getPostedBy());
+				postedBy.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(postedBy);
+				// inject size to HBox
+				Label productSize = new Label();
+				productSize.setText(currentProduct.getSize());
+				productSize.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(productSize);
+
+				// inject button to Hbox
+				Button addToCart = new Button();
+				addToCart.setText("Add To Cart");
+				addToCart.setId(String.valueOf(currentProduct.getId()));
+				addToCart.setOnAction(event -> {
+					System.out.println("Add to cart clicked");
+					UserSession.getInstance().getUserCart().add(currentProduct);
+				});
+				addToCart.setMinWidth(Region.USE_PREF_SIZE);
+				nodes[i].getChildren().add(addToCart);
+				itemList.getChildren().add(nodes[i]);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
