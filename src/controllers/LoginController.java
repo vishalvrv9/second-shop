@@ -116,7 +116,7 @@ public class LoginController implements Initializable {
 			status = "Error";
 		} else {
 			// query
-			String sqlQuery = isAdmin ? "SELECT * FROM admins Where username = ? and password = ?"
+			String sqlQuery = isAdmin ? "SELECT * FROM admins Where username = ? and password = ? and isApproved = 1"
 					: "SELECT * FROM users Where username = ? and password = ?";
 
 			try {

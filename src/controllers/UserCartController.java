@@ -83,6 +83,8 @@ public class UserCartController implements Initializable{
 			PaneRouter.route(this, event, "/fxml/BuyUserDashboard.fxml");
 		} else if (("Sell").equals(userIntent.getValue())) {
 			PaneRouter.route(this, event, "/fxml/SellUserDashboard.fxml");
+		}else if (("Logout").equals(userIntent.getValue())) {
+			PaneRouter.route(this, event, "/fxml/LoginPane.fxml");
 		}
 
 	}
@@ -97,7 +99,7 @@ public class UserCartController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		userIntent.getItems().addAll("Buy", "Sell");
+		userIntent.getItems().addAll("Buy", "Sell", "Logout");
 		productsInCart = UserSession.getInstance().getUserCart();
 		System.out.println("Items in cart: "+ productsInCart.toString());
 		populateScrollPane(itemsInCart);

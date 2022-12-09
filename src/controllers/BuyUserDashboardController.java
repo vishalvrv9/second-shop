@@ -84,13 +84,15 @@ public class BuyUserDashboardController implements Initializable {
 			PaneRouter.route(this, event, "/fxml/BuyUserDashboard.fxml");
 		} else if (("Sell").equals(userIntent.getValue())) {
 			PaneRouter.route(this, event, "/fxml/SellUserDashboard.fxml");
+		}else if (("Logout").equals(userIntent.getValue())) {
+			PaneRouter.route(this, event, "/fxml/LoginPane.fxml");
 		}
 
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		userIntent.getItems().addAll("Buy", "Sell");
+		userIntent.getItems().addAll("Buy", "Sell", "Logout");
 		if(products.isEmpty()) {			
 			products = loadProductCatalog();
 		}

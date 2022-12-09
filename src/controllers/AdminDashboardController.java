@@ -51,7 +51,7 @@ public class AdminDashboardController implements Initializable {
 	private Label lblStatus;
 
 	@FXML
-	Label approvalStatus;
+	private Label approvalStatus;
 
 	@FXML
 	private Button btnUserIntent;
@@ -64,6 +64,8 @@ public class AdminDashboardController implements Initializable {
 
 	public AdminDashboardController() {
 		con = ConnectionUtil.connectToDB();
+		sellerQueue = new ArrayList<>();
+		userAuthQueue = new ArrayList<>();
 
 	}
 
@@ -81,23 +83,33 @@ public class AdminDashboardController implements Initializable {
 		} else if (("Approve Users").equals(userIntent.getValue())) {
 			setLblError(Color.GREEN, "Redirecting to users page...");
 			PaneRouter.route(this, event, "/fxml/AdminApproveUsers.fxml");
+		}else if (("Logout").equals(userIntent.getValue())) {
+			setLblError(Color.GREEN, "Redirecting to login page...");
+			PaneRouter.route(this, event, "/fxml/LoginPane.fxml");
 		}
 
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		userIntent.getItems().addAll("Overview", "Approve Sellers", "Approve Users");
+		userIntent.getItems().addAll("Approve Sellers", "Approve Users", "Logout");
 		ApprovalQueue approvalQueue = ApprovalQueue.getInstance();
 		userAuthQueue = approvalQueue.getUserAuthQueue();
 		sellerQueue = approvalQueue.getSellerQueue();
 		System.out.println(userAuthQueue);
 		System.out.println(sellerQueue);
-		populateSellerQueue(unapprovedSellerList);
-		populateUserQueue(unapprovedUserList);
+		if(!sellerQueue.isEmpty()) {
+			
+			populateSellerQueue(unapprovedSellerList);
+		}
+		if(!userAuthQueue.isEmpty()) {
+			
+			populateUserQueue(unapprovedUserList);
+		}
 	}
 
 	private void populateSellerQueue(VBox itemList) {
+		
 		HBox[] nodes = new HBox[sellerQueue.size()];
 		for (int i = 0; i < nodes.length; i++) {
 			try {
@@ -222,11 +234,11 @@ public class AdminDashboardController implements Initializable {
 			System.out.println("ResultSet: " + isRegistered);
 
 			if (isRegistered > 0) {
-				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.GREEN, status);
+				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.GREEN, "User granted admin privilege");
 				status = "Success";
 
 			} else {
-				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.TOMATO, status);
+				RenderLabelUtil.renderLabelInfo(approvalStatus, Color.TOMATO, "Some problem occured. Please try later.");
 				status = "Failure";
 			}
 		} catch (SQLException ex) {
@@ -245,6 +257,7 @@ public class AdminDashboardController implements Initializable {
 		try {
 			preparedStatement = con.prepareStatement(sqlQuery);
 			preparedStatement.setInt(1, product.getId());
+			System.out.println(product.getId());
 			int isRegistered = preparedStatement.executeUpdate();
 			System.out.println("ResultSet: " + isRegistered);
 

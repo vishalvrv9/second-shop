@@ -72,13 +72,16 @@ public class UserDashboardController implements Initializable {
 		} else if (("Sell").equals(userIntent.getValue())) {
 			setLblError(Color.GREEN, "Redirecting to seller page...");
 			PaneRouter.route(this, event, "/fxml/SellUserDashboard.fxml");
+		} else if (("Logout").equals(userIntent.getValue())) {
+			setLblError(Color.GREEN, "Redirecting to seller page...");
+			PaneRouter.route(this, event, "/fxml/LoginPane.fxml");
 		}
 
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		userIntent.getItems().addAll("Buy", "Sell");
+		userIntent.getItems().addAll("Buy", "Sell", "Logout");
 	
 	}
 
